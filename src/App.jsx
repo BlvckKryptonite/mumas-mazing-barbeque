@@ -5,23 +5,22 @@ import Chefs from "./components/Chefs";
 import EventDetails from "./components/EventDetails";
 import Gallery from "./components/Gallery";
 import FAQ from "./components/FAQ";
-import Separator from "./components/Separator";
 
 function App() {
   return (
-    <div className="bg-gradient-to-br from-yellow-100 via-red-100 to-pink-100 text-gray-800 font-sans">
+    <main className="bg-gray-100 font-sans text-gray-800">
       <HeroBanner />
-      <Separator />
+      <div className="w-full h-4 bg-gradient-to-r from-red-500 to-yellow-400 my-8" />
       <Invitation />
-      <Separator />
+      <div className="w-full h-4 bg-gradient-to-r from-yellow-400 to-orange-500 my-8" />
       <Chefs />
-      <Separator />
+      <div className="w-full h-4 bg-gradient-to-r from-orange-500 to-pink-500 my-8" />
       <EventDetails />
-      <Separator />
+      <div className="w-full h-4 bg-gradient-to-r from-pink-500 to-purple-600 my-8" />
       <Gallery />
-      <Separator />
+      <div className="w-full h-4 bg-gradient-to-r from-purple-600 to-red-500 my-8" />
       <FAQ />
-    </div>
+    </main>
   );
 }
 
