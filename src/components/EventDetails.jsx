@@ -12,7 +12,7 @@ const EventDetails = () => {
       className="bg-black text-white py-20 px-4 text-center"
     >
       <h2 className="text-4xl md:text-5xl font-heading text-red-500 mb-10 uppercase drop-shadow-md">
-        📍 Event Details
+        Event Details
       </h2>
 
       <p className="text-lg max-w-2xl mx-auto font-body text-gray-200 mb-8">

@@ -6,24 +6,24 @@ const chefs = [
     name: "Muma the Grillmaster",
     role: "Head Chef & Firebender",
     img: "assets/images/headchef.png",
-    desc: "Wields tongs like Thor wields Mjölnir. His brisket once caused a standing ovation at a silent retreat."
+    desc: "Wields tongs like Thor wields Mjölnir. His legendary flame grilled brisket once caused a standing ovation at a silent retreat."
   },
   {
     name: "Flamebeard Frank",
     role: "Smoker Supreme",
-    img: "https://via.placeholder.com/400x250?text=Frank",
+    img: "assets/images/flamebeard-frank.png",
     desc: "Can smoke a whole rack of ribs with just a glance and a hint of hickory."
   },
   {
     name: "Saucy Sandra",
     role: "Condiment Conjurer",
-    img: "https://via.placeholder.com/400x250?text=Sandra",
+    img: "assets/images/saucy-sandra.png",
     desc: "Invented 37 secret sauces. All of them perfect. All of them mysterious."
   },
   {
     name: "Charcoal Charlie",
     role: "Pit Magician",
-    img: "https://via.placeholder.com/400x250?text=Charlie",
+    img: "assets/images/charcoal-charlie.png",
     desc: "Once grilled in a snowstorm and turned it into summer. No one knows how."
   }
 ];
@@ -89,7 +89,7 @@ const Chefs = () => {
               <img
                 src={chef.img}
                 alt={chef.name}
-                className="w-full h-48 object-cover mb-4 rounded-sm"
+                className="w-full max-h-[400px] object-contain mb-4 rounded-md"
               />
               <h3 className="text-xl font-heading text-yellow-300">{chef.name}</h3>
               <p className="text-sm italic">{chef.role}</p>
