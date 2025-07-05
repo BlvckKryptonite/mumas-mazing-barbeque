@@ -1,58 +1,86 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const chefs = [
   {
     name: "Muma the Grillmaster",
     role: "Head Chef & Firebender",
-    img: "https://via.placeholder.com/200x200?text=Muma",
+    img: "https://via.placeholder.com/400x250?text=Muma",
     desc: "Wields tongs like Thor wields Mjölnir. His brisket once caused a standing ovation at a silent retreat."
   },
   {
     name: "Flamebeard Frank",
     role: "Smoker Supreme",
-    img: "https://via.placeholder.com/200x200?text=Frank",
+    img: "https://via.placeholder.com/400x250?text=Frank",
     desc: "Can smoke a whole rack of ribs with just a glance and a hint of hickory."
   },
   {
     name: "Saucy Sandra",
     role: "Condiment Conjurer",
-    img: "https://via.placeholder.com/200x200?text=Sandra",
+    img: "https://via.placeholder.com/400x250?text=Sandra",
     desc: "Invented 37 secret sauces. All of them perfect. All of them mysterious."
   },
   {
     name: "Charcoal Charlie",
     role: "Pit Magician",
-    img: "https://via.placeholder.com/200x200?text=Charlie",
+    img: "https://via.placeholder.com/400x250?text=Charlie",
     desc: "Once grilled in a snowstorm and turned it into summer. No one knows how."
   }
 ];
 
 const Chefs = () => {
+  const headChef = chefs[0];
+  const otherChefs = chefs.slice(1);
+
   return (
-    <section className="bg-white py-16 px-4 text-center">
-      <h2 className="text-4xl font-bold mb-6 text-gray-900">🔥 Meet Our Chefs</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
-        {chefs.map((chef, index) => (
+    <motion.section
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, ease: "easeOut" }}
+      viewport={{ once: true }}
+      className="bg-black text-white py-20 px-4 text-center"
+    >
+      <h2 className="text-4xl md:text-5xl font-heading text-red-500 mb-12 drop-shadow-md uppercase">
+        🔥 Meet Our Chefs
+      </h2>
+
+      {/* Head Chef */}
+      <div className="max-w-2xl mx-auto mb-16">
+        <div className="bg-red-800 border-4 border-white p-6 rounded-lg shadow-lg transform transition hover:scale-105 min-h-[400px]">
+          <img
+            src={headChef.img}
+            alt={headChef.name}
+            className="w-full h-60 object-cover mb-4 rounded-md"
+          />
+          <h3 className="text-2xl font-heading text-yellow-300">{headChef.name}</h3>
+          <p className="text-sm text-white italic">{headChef.role}</p>
+          <p className="text-white mt-2 font-body">{headChef.desc}</p>
+        </div>
+      </div>
+
+      {/* Other Chefs */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        {otherChefs.map((chef, index) => (
           <div
             key={index}
-            className="bg-yellow-50 rounded-xl p-6 shadow-md hover:shadow-xl transform transition hover:scale-105"
+            className="bg-red-900 border-2 border-white p-6 rounded-lg shadow-md hover:shadow-xl transform transition hover:scale-105 min-h-[360px]"
           >
             <img
               src={chef.img}
               alt={chef.name}
-              className="w-32 h-32 mx-auto mb-4 rounded-full object-cover border-4 border-red-500"
+              className="w-full h-48 object-cover mb-4 rounded-sm"
             />
-            <h3 className="text-xl font-bold text-gray-800">{chef.name}</h3>
-            <p className="text-sm text-red-600 mb-2">{chef.role}</p>
-            <p className="text-gray-700 text-sm">{chef.desc}</p>
+            <h3 className="text-xl font-heading text-yellow-300">{chef.name}</h3>
+            <p className="text-sm text-white italic">{chef.role}</p>
+            <p className="text-white mt-2 font-body">{chef.desc}</p>
           </div>
         ))}
       </div>
 
-      <button className="mt-12 px-8 py-4 bg-red-600 hover:bg-red-700 text-white text-lg font-bold rounded-md shadow-lg transition duration-300 transform hover:scale-105">
-        Get Tickets
+      <button className="mt-14 px-10 py-4 bg-red-600 hover:bg-red-700 text-white font-heading text-lg rounded-none border-2 border-white shadow-md transition-transform hover:scale-110">
+        🎟️ Get Tickets
       </button>
-    </section>
+    </motion.section>
   );
 };
 
