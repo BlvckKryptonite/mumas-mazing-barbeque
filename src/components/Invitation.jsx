@@ -25,7 +25,7 @@ const Invitation = () => {
       </p>
 
       <button className="mt-10 px-8 py-3 bg-red-600 hover:bg-red-700 text-white font-bold font-heading text-xl rounded-none border-2 border-white shadow-lg transition-transform transform hover:scale-105">
-        🎟️ Get Tickets
+        Get Tickets
       </button>
     </motion.section>
   );
