@@ -18,34 +18,60 @@ const Gallery = () => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
       viewport={{ once: true }}
-      className="bg-black text-white py-20 px-4"
+      className="relative text-white py-20 px-6 md:px-12 font-body gallery-bg bg-cover bg-center overflow-hidden"
+      style={{
+        backgroundImage: "url('assets/images/chefs-background.png')",
+      }}
     >
-      <h2 className="text-4xl md:text-5xl font-heading text-red-500 text-center mb-10 uppercase drop-shadow-md">
-        📸 The Grillery
-      </h2>
+      {/* Dark overlay for readability */}
+      <div className="absolute inset-0 bg-black opacity-50 z-0 pointer-events-none" />
 
-      <p className="text-center text-lg text-gray-300 mb-10 font-body">
-        Witness the sizzle, the spectacle, and the sheer comic book chaos of Muma’s ‘Mazing BBQ.
-      </p>
+      <div className="relative z-10 max-w-7xl mx-auto">
+        <h2 className="text-4xl md:text-5xl font-heading text-red-500 text-center mb-10 uppercase drop-shadow-md">
+          📸 The Grillery
+        </h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-        {images.map((src, index) => (
-          <div
-            key={index}
-            className="overflow-hidden rounded-xl border-4 border-white shadow-lg transform hover:scale-105 transition duration-300"
-          >
-            <img
-              src={src}
-              alt={`Gallery ${index + 1}`}
-              className="w-full h-64 object-cover"
-            />
-          </div>
-        ))}
+        <p className="text-center text-lg md:text-xl text-gray-300 mb-10 font-body">
+          Get a peek behind the smoke — where grills blaze, meat sizzles, and heroes pose with ribs like they’re trophies.
+        </p>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {images.map((src, index) => (
+            <div
+              key={index}
+              className="overflow-hidden rounded-xl border-4 border-white shadow-lg transform hover:scale-105 transition duration-300"
+            >
+              <img
+                src={src}
+                alt={`Gallery ${index + 1}`}
+                className="w-full h-64 object-cover"
+              />
+            </div>
+          ))}
+        </div>
+
+        <motion.button
+          whileHover={{ scale: 1.07 }}
+          transition={{ duration: 0.4 }}
+          className="mt-16 mx-auto block px-10 py-4 bg-red-600 hover:bg-red-700 text-white font-heading text-lg rounded-none border-2 border-white shadow-md transition-transform hover:scale-110"
+        >
+          Get Tickets
+        </motion.button>
       </div>
 
-      <button className="mt-16 mx-auto block px-10 py-4 bg-red-600 hover:bg-red-700 text-white font-heading text-lg rounded-none border-2 border-white shadow-md transition-transform hover:scale-110">
-        🎟️ Get Tickets
-      </button>
+      {/* Mobile background override */}
+      <style>
+        {`
+          @media (max-width: 768px) {
+            section.gallery-bg {
+              background-image: url('assets/images/chefs-background.png') !important;
+              background-position: center top !important;
+              background-repeat: no-repeat !important;
+              background-size: cover !important;
+            }
+          }
+        `}
+      </style>
     </motion.section>
   );
 };
