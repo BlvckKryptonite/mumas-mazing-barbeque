@@ -3,37 +3,22 @@ import { motion } from 'framer-motion';
 
 const HeroBanner = () => {
   return (
-    <section className="bg-gradient-to-br from-black via-red-800 to-yellow-500 text-white py-24 overflow-hidden">
-      <div className="container mx-auto px-4 text-center">
-        <motion.h1
-          initial={{ y: -30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ type: 'spring', stiffness: 80 }}
-          className="text-5xl md:text-6xl font-heading mb-4 drop-shadow-[2px_2px_4px_rgba(0,0,0,0.6)]"
-        >
+    <motion.section
+      initial={{ y: -50, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ type: 'spring', stiffness: 60, damping: 10 }}
+      className="relative w-full h-screen bg-cover bg-center flex items-center justify-end px-6 md:px-20"
+      style={{ backgroundImage: "url('assets/images/herobanner.png')" }} // Banner image
+    >
+      <div className="bg-black bg-opacity-60 p-6 rounded-xl max-w-xl text-right">
+        <h1 className="text-4xl md:text-6xl font-heading text-white mb-4 leading-tight">
           🔥 Muma’s ‘Mazing BBQ 🔥
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3 }}
-          className="text-xl md:text-2xl italic font-body mb-8"
-        >
-          “Where the grill meets greatness — and the steak saves the day!”
-        </motion.p>
-
-        {/* Hero Image Placeholder */}
-        <motion.img
-          src="/images/muma-hero.png" // Image placeholder
-          alt="Muma the Grillmaster"
-          initial={{ scale: 0.8, opacity: 0, y: 50 }}
-          animate={{ scale: 1, opacity: 1, y: 0 }}
-          transition={{ type: 'spring', stiffness: 80, damping: 12 }}
-          className="mt-8 mx-auto max-w-md sm:max-w-lg rounded-xl shadow-2xl border-4 border-white"
-        />
+        </h1>
+        <p className="text-lg md:text-2xl font-body italic text-red-300">
+          "Where the grill meets greatness — and the steak saves the day!"
+        </p>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
