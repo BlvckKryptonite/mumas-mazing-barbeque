@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import invitationBg from "../assets/images/invitation-background.png"; // Use Vite-compatible import for deployed site
+import invitationBg from "../assets/images/invitation-background.png";
 
 const Invitation = () => {
   return (
@@ -18,19 +18,18 @@ const Invitation = () => {
       <div className="absolute inset-0 bg-black opacity-30 z-0" />
 
       {/* Mobile background override */}
-            <style>
-              {`
-                @media (max-width: 768px) {
-                  section.gallery-bg {
-                    background-image: url('${invitationBg}') !important;
-                    background-position: center top !important;
-                    background-repeat: no-repeat !important;
-                    background-size: cover !important;
-                  }
-                }
-              `}
-            </style>
-          </motion.section>
+      <style>
+        {`
+          @media (max-width: 768px) {
+            section.invitation-bg {
+              background-image: url(${invitationBg}) !important;
+              background-position: center top !important;
+              background-repeat: no-repeat !important;
+              background-size: cover !important;
+            }
+          }
+        `}
+      </style>
 
       {/* Main Content */}
       <div className="relative z-10">
