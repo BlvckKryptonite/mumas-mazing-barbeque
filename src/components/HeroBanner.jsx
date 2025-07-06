@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import GraphemeSplitter from 'grapheme-splitter';
-import heroBanner from '/assets/images/herobanner.png';
-import heroBannerVertical from '/assets/images/herobannervertical.png';
+import heroBanner from '../assets/images/herobanner.png';
+import heroBannerVertical from '../assets/images/herobannervertical.png';
 
 const splitter = new GraphemeSplitter();
 const headlineChars = splitter.splitGraphemes("🔥 Muma’s ‘Mazing BBQ 🔥");
@@ -30,9 +30,10 @@ const HeroBanner = () => {
         `}
       </style>
 
-      {/* Background picture overlay */}
+      {/* Background overlay */}
       <div className="absolute inset-0 bg-black bg-opacity-20 z-0"></div>
 
+      {/* Headline + Tagline */}
       <div className="z-10 w-full max-w-[900px] text-center md:text-right md:ml-auto md:mr-12 lg:mr-24">
         <motion.h1
           className="text-3xl sm:text-4xl md:text-6xl lg:text-6xl xl:text-[4rem] font-heading text-white mb-4 leading-tight tracking-wider"
@@ -73,6 +74,7 @@ const HeroBanner = () => {
         </motion.p>
       </div>
 
+      {/* Scroll Cue */}
       <motion.div
         className="absolute bottom-4 sm:bottom-6 left-1/2 transform -translate-x-1/2 text-white text-2xl animate-bounce"
         initial={{ opacity: 0 }}
