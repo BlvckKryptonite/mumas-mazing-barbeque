@@ -58,19 +58,20 @@ const Chefs = () => {
           the exact CSS string including the resolved image path.
       */}
       <style
-        dangerouslySetInnerHTML={{
-          __html: `
-            @media (max-width: 768px) {
-              section.chefs-bg {
-                background-image: url('${chefsBg}');
-                background-position: center top;
-                background-repeat: no-repeat;
-                background-size: cover;
-              }
-            }
-          `,
-        }}
-      />
+  dangerouslySetInnerHTML={{
+    __html: `
+      @media (max-width: 768px) {
+        section.chefs-bg {
+          background-image: url(${JSON.stringify(chefsBg)});
+          background-position: center top;
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+      }
+    `
+  }}
+/>
+
 
       {/* Main Content */}
       <div className="relative z-10">

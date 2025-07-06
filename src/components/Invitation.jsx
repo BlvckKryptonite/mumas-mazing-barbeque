@@ -19,19 +19,20 @@ const Invitation = () => {
 
       {/* Mobile background override using raw CSS injection */}
       <style
-        dangerouslySetInnerHTML={{
-          __html: `
-            @media (max-width: 768px) {
-              section.invitation-bg {
-                background-image: url('${invitationBg}');
-                background-position: center top;
-                background-repeat: no-repeat;
-                background-size: cover;
-              }
-            }
-          `,
-        }}
-      />
+  dangerouslySetInnerHTML={{
+    __html: `
+      @media (max-width: 768px) {
+        section.invitation-bg {
+          background-image: url(${JSON.stringify(invitationBg)});
+          background-position: center top;
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+      }
+    `
+  }}
+/>
+
 
       {/* Main Content */}
       <div className="relative z-10">
