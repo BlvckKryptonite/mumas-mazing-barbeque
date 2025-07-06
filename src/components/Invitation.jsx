@@ -10,26 +10,28 @@ const Invitation = () => {
       transition={{ duration: 0.8, ease: "easeOut" }}
       viewport={{ once: true }}
       style={{
-        backgroundImage: `url(${invitationBg})`
+        backgroundImage: `url(${invitationBg})` // Main desktop background
       }}
       className="invitation-bg relative bg-black text-red-100 py-24 px-6 text-center overflow-hidden bg-cover bg-center bg-no-repeat"
     >
       {/* Background image overlay */}
       <div className="absolute inset-0 bg-black opacity-30 z-0" />
 
-      {/* Mobile background override */}
-     <style>
-  {`
-    @media (max-width: 768px) {
-      section.invitation-bg {
-        background-image: url('${invitationBg}');
-        background-position: center top;
-        background-repeat: no-repeat;
-        background-size: cover;
-      }
-    }
-  `}
-</style>
+      {/* ✅ Mobile background override using raw CSS injection */}
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+            @media (max-width: 768px) {
+              section.invitation-bg {
+                background-image: url('${invitationBg}');
+                background-position: center top;
+                background-repeat: no-repeat;
+                background-size: cover;
+              }
+            }
+          `,
+        }}
+      />
 
       {/* Main Content */}
       <div className="relative z-10">
@@ -38,8 +40,8 @@ const Invitation = () => {
         </h2>
 
         <p className="max-w-3xl mx-auto text-lg md:text-xl font-body leading-relaxed">
-          🍖 <strong className="text-yellow-400">Enter the mouth-watering BBQverse...</strong><br /> A world of sizzling ribs, juicy steaks,
-          succulent strips and all-around grilled goodness.
+          🍖 <strong className="text-yellow-400">Enter the mouth-watering BBQverse...</strong><br />
+          A world of sizzling ribs, juicy steaks, succulent strips and all-around grilled goodness.
         </p>
 
         <p className="max-w-3xl mx-auto text-lg md:text-xl font-body mt-6 leading-relaxed">
