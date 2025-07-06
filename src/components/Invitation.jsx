@@ -17,7 +17,7 @@ const Invitation = () => {
       {/* Background image overlay */}
       <div className="absolute inset-0 bg-black opacity-30 z-0" />
 
-      {/* ✅ Mobile background override using raw CSS injection */}
+      {/* Mobile background override using raw CSS injection */}
       <style
         dangerouslySetInnerHTML={{
           __html: `
