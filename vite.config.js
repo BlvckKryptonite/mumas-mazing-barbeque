@@ -3,7 +3,6 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  base: './mumas-mazing-barbeque/'
+  base: '/mumas-mazing-barbeque/', // <- For GitHub Pages Deployment
 });
-
 
