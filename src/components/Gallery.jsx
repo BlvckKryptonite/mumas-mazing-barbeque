@@ -3,11 +3,17 @@ import { motion } from "framer-motion";
 
 const images = [
   "assets/images/food 1.png",
-  "https://via.placeholder.com/400x300?text=Smoky+Goodness",
-  "https://via.placeholder.com/400x300?text=BBQ+Squad",
+  "assets/images/food 5.png",
+  "assets/images/food 4.png",
   "https://via.placeholder.com/400x300?text=Flame+Show",
   "https://via.placeholder.com/400x300?text=Juicy+Ribs",
-  "https://via.placeholder.com/400x300?text=Comic+BBQ+Moment"
+  "https://via.placeholder.com/400x300?text=Comic+BBQ+Moment",
+  "https://via.placeholder.com/400x300?text=Flame+Show",
+  "https://via.placeholder.com/400x300?text=Juicy+Ribs",
+  "https://via.placeholder.com/400x300?text=Comic+BBQ+Moment",
+  "https://via.placeholder.com/400x300?text=Comic+BBQ+Moment",
+  "https://via.placeholder.com/400x300?text=Comic+BBQ+Moment",
+  "https://via.placeholder.com/400x300?text=Comic+BBQ+Moment",
 ];
 
 const Gallery = () => {
@@ -27,43 +33,67 @@ const Gallery = () => {
       <div className="absolute inset-0 bg-black opacity-50 z-0 pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto">
-        <h2 className="text-5xl md:text-6xl font-heading text-red-600 text-center mb-6 uppercase drop-shadow-lg tracking-widest" style={{ fontFamily: "'Bangers', cursive" }}>
+        <h2 className="text-4xl md:text-5xl font-heading text-red-500 text-center mb-6 uppercase drop-shadow-md">
           📸 The Grillery
         </h2>
 
-        <p className="text-center text-xl md:text-2xl text-yellow-400 mb-12 max-w-3xl mx-auto leading-relaxed tracking-wide" style={{ fontFamily: "'Bangers', cursive" }}>
-          Get a peek behind the smoke — where grills blaze, meat sizzles, and heroes pose with ribs like they’re trophies.
+        <p className="text-center text-lg md:text-xl text-yellow-400 mb-12 font-heading font-bold">
+          Get a peek behind the smoke — where grills blaze, meat sizzles, and
+          heroes pose with ribs like they’re trophies.
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-  {images.map((src, index) => (
-    <div
-      key={index}
-      className="bg-[#f4e3c1] border-[6px] border-[#f4e3c1] shadow-xl rounded-none overflow-hidden transform hover:scale-105 transition duration-300"
-    >
-      <img
-        src={src}
-        alt={`Gallery ${index + 1}`}
-        className="w-full h-64 object-cover"
-      />
-    </div>
-  ))}
-</div>
+        {/* Desktop grid layout */}
+        <div className="hidden sm:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+          {images.map((src, index) => (
+            <div
+              key={index}
+              className="bg-[#f4e3c1] border-[6px] border-[#f4e3c1] shadow-xl overflow-hidden transform hover:scale-105 transition duration-300"
+            >
+              <img
+                src={src}
+                alt={`Gallery ${index + 1}`}
+                className="w-full h-[22rem] sm:h-[28rem] object-contain bg-black"
+              />
+            </div>
+          ))}
+        </div>
 
+        {/* Mobile horizontal scroll layout */}
+        <div className="sm:hidden flex space-x-6 overflow-x-auto snap-x snap-mandatory px-2 py-4 -mx-2">
+          {images.map((src, index) => (
+            <div
+              key={index}
+              className="min-w-[80%] bg-[#f4e3c1] border-[6px] border-[#f4e3c1] shadow-xl snap-start flex-shrink-0 transform hover:scale-105 transition duration-300"
+            >
+              <img
+                src={src}
+                alt={`Gallery ${index + 1}`}
+                className="w-full h-[22rem] sm:h-[28rem] object-contain bg-black"
+              />
+            </div>
+          ))}
+        </div>
 
         <motion.button
-          whileHover={{ scale: 1.1 }}
-          transition={{ duration: 0.3 }}
-          className="mt-16 mx-auto block px-10 py-4 bg-red-600 hover:bg-yellow-400 text-white hover:text-black font-heading text-xl uppercase tracking-wider border-[3px] border-white drop-shadow-lg"
-          style={{ fontFamily: "'Bangers', cursive" }}
+          whileHover={{ scale: 1.07 }}
+          transition={{ duration: 0.4 }}
+          className="mt-16 mx-auto block px-10 py-4 bg-red-600 hover:bg-red-700 text-white font-heading text-lg rounded-none border-2 border-white shadow-md transition-transform hover:scale-110"
         >
-          🎟️ Get Tickets
+          Get Tickets
         </motion.button>
       </div>
 
-      {/* Mobile background override */}
+      {/* Momentum scroll hiding scrollbar */}
       <style>
         {`
+          .snap-x::-webkit-scrollbar {
+            display: none;
+          }
+          .snap-x {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+          }
+
           @media (max-width: 768px) {
             section.gallery-bg {
               background-image: url('assets/images/chefs-background.png') !important;
@@ -74,9 +104,6 @@ const Gallery = () => {
           }
         `}
       </style>
-
-      {/* Font Import */}
-      <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet" />
     </motion.section>
   );
 };
