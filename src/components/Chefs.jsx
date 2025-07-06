@@ -54,18 +54,18 @@ const Chefs = () => {
       <div className="absolute inset-0 bg-black opacity-40 z-0" />
 
       {/* Mobile background override here */}
-      <style>
-        {`
-          @media (max-width: 768px) {
-            section.chefs-bg {
-              background-image: url(${chefsBg}) !important;
-              background-position: center top !important;
-              background-repeat: no-repeat !important;
-              background-size: cover !important;
-            }
-          }
-        `}
-      </style>
+     <style>
+  {`
+    @media (max-width: 768px) {
+      section.chefs-bg {
+        background-image: url('${chefsBg}');
+        background-position: center top;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    }
+  `}
+</style>
 
       {/* Main Content */}
       <div className="relative z-10">

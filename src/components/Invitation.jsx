@@ -18,18 +18,18 @@ const Invitation = () => {
       <div className="absolute inset-0 bg-black opacity-30 z-0" />
 
       {/* Mobile background override */}
-      <style>
-        {`
-          @media (max-width: 768px) {
-            section.invitation-bg {
-              background-image: url(${invitationBg}) !important;
-              background-position: center top !important;
-              background-repeat: no-repeat !important;
-              background-size: cover !important;
-            }
-          }
-        `}
-      </style>
+     <style>
+  {`
+    @media (max-width: 768px) {
+      section.invitation-bg {
+        background-image: url('${invitationBg}');
+        background-position: center top;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    }
+  `}
+</style>
 
       {/* Main Content */}
       <div className="relative z-10">
