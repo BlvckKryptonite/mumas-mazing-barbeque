@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import invitationBg from "../assets/images/invitation-background.png"; // Use Vite-compatible import for deployed site
 
 const Invitation = () => {
   return (
@@ -8,20 +9,11 @@ const Invitation = () => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
       viewport={{ once: true }}
-      className="invitation-bg relative bg-black text-red-100 py-24 px-6 text-center overflow-hidden bg-cover bg-center bg-no-repeat bg-[url('/assets/images/invitation-background.png')]"
+      style={{
+        backgroundImage: `url(${invitationBg})`
+      }}
+      className="invitation-bg relative bg-black text-red-100 py-24 px-6 text-center overflow-hidden bg-cover bg-center bg-no-repeat"
     >
-      {/* Mobile override to force correct background on small screens */}
-      <style>
-        {`
-          @media (max-width: 768px) {
-            section.invitation-bg {
-              background-image: url('/assets/images/invitation-background.png') !important;
-              background-position: center top !important;
-            }
-          }
-        `}
-      </style>
-
       {/* Background image overlay */}
       <div className="absolute inset-0 bg-black opacity-30 z-0" />
 
@@ -32,8 +24,8 @@ const Invitation = () => {
         </h2>
 
         <p className="max-w-3xl mx-auto text-lg md:text-xl font-body leading-relaxed">
-          🍖 <strong className="text-yellow-400">Enter the mouth-watering BBQverse...</strong><br></br> A world of sizzling ribs, juicy steaks,
-          succulent strips and all-around grilled goodness. <br></br>
+          🍖 <strong className="text-yellow-400">Enter the mouth-watering BBQverse...</strong><br /> A world of sizzling ribs, juicy steaks,
+          succulent strips and all-around grilled goodness.
         </p>
 
         <p className="max-w-3xl mx-auto text-lg md:text-xl font-body mt-6 leading-relaxed">
