@@ -47,25 +47,30 @@ const Chefs = () => {
       viewport={{ once: true }}
       className="relative chefs-bg text-white py-20 px-4 text-center overflow-hidden bg-cover bg-center bg-no-repeat"
       style={{
-        backgroundImage: `url(${chefsBg})`,
+        backgroundImage: `url(${chefsBg})`, // Main background image for desktop
       }}
     >
-      {/* Background image overlay */}
+      {/* Background overlay for darkening effect */}
       <div className="absolute inset-0 bg-black opacity-40 z-0" />
 
-      {/* Mobile background override here */}
-     <style>
-  {`
-    @media (max-width: 768px) {
-      section.chefs-bg {
-        background-image: url('${chefsBg}');
-        background-position: center top;
-        background-repeat: no-repeat;
-        background-size: cover;
-      }
-    }
-  `}
-</style>
+      {/* Mobile background override using raw CSS injection
+          Used dangerouslySetInnerHTML to ensure React injects
+          the exact CSS string including the resolved image path
+      */}
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+            @media (max-width: 768px) {
+              section.chefs-bg {
+                background-image: url('${chefsBg}');
+                background-position: center top;
+                background-repeat: no-repeat;
+                background-size: cover;
+              }
+            }
+          `,
+        }}
+      />
 
       {/* Main Content */}
       <div className="relative z-10">
@@ -73,7 +78,7 @@ const Chefs = () => {
           Meet Our Chefs
         </h2>
 
-        {/* Head Chef */}
+        {/* Head Chef Card */}
         <div className="max-w-2xl mx-auto mb-16">
           <div className="bg-black border-4 border-white p-6 rounded-lg shadow-lg transform transition hover:scale-105 min-h-[400px]">
             <img
@@ -87,7 +92,7 @@ const Chefs = () => {
           </div>
         </div>
 
-        {/* Other Chefs */}
+        {/* Other Chefs Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {otherChefs.map((chef, index) => (
             <div
@@ -106,7 +111,7 @@ const Chefs = () => {
           ))}
         </div>
 
-        {/* CTA */}
+        {/* Call to Action */}
         <motion.button
           whileHover={{ scale: 1.07, rotate: [-1, 1, 0] }}
           initial={{ opacity: 0, scale: 0.9 }}
