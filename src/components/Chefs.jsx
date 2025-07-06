@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-// Imports for images
+// Image imports
 import headChefImg from '../assets/images/headchef.png';
 import flamebeardImg from '../assets/images/flamebeard-frank.png';
 import sandraImg from '../assets/images/saucy-sandra.png';
@@ -50,10 +50,22 @@ const Chefs = () => {
         backgroundImage: `url(${chefsBg})`,
       }}
     >
-      {/* Overlay for readability */}
+      {/* Background image overlay */}
       <div className="absolute inset-0 bg-black opacity-40 z-0" />
 
-      
+      {/* Mobile background override here */}
+      <style>
+        {`
+          @media (max-width: 768px) {
+            section.chefs-bg {
+              background-image: url(${chefsBg}) !important;
+              background-position: center top !important;
+              background-repeat: no-repeat !important;
+              background-size: cover !important;
+            }
+          }
+        `}
+      </style>
 
       {/* Main Content */}
       <div className="relative z-10">
@@ -94,21 +106,7 @@ const Chefs = () => {
           ))}
         </div>
 
-        {/* Mobile background override */}
-              <style>
-                {`
-                  @media (max-width: 768px) {
-                    section.gallery-bg {
-                      background-image: url('${bgImage}') !important;
-                      background-position: center top !important;
-                      background-repeat: no-repeat !important;
-                      background-size: cover !important;
-                    }
-                  }
-                `}
-              </style>
-
-        {/* Call to Action */}
+        {/* CTA */}
         <motion.button
           whileHover={{ scale: 1.07, rotate: [-1, 1, 0] }}
           initial={{ opacity: 0, scale: 0.9 }}
