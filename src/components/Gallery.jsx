@@ -3,17 +3,17 @@ import { motion } from "framer-motion";
 
 const images = [
   "assets/images/food 1.png",
-  "assets/images/food 5.png",
+  "/assets/images/food 5.png",
+  "assets/images/food 7.png",
+  "assets/images/food 11.png",
+  "assets/images/food 10.png",
   "assets/images/food 4.png",
-  "https://via.placeholder.com/400x300?text=Flame+Show",
-  "https://via.placeholder.com/400x300?text=Juicy+Ribs",
-  "https://via.placeholder.com/400x300?text=Comic+BBQ+Moment",
-  "https://via.placeholder.com/400x300?text=Flame+Show",
-  "https://via.placeholder.com/400x300?text=Juicy+Ribs",
-  "https://via.placeholder.com/400x300?text=Comic+BBQ+Moment",
-  "https://via.placeholder.com/400x300?text=Comic+BBQ+Moment",
-  "https://via.placeholder.com/400x300?text=Comic+BBQ+Moment",
-  "https://via.placeholder.com/400x300?text=Comic+BBQ+Moment",
+  "assets/images/food 3.png",
+  "assets/images/food 2.png",
+  "assets/images/food 6.png",
+  "assets/images/food 12.png",
+  "assets/images/food 13.png",
+  "assets/images/food 14.png"
 ];
 
 const Gallery = () => {
@@ -29,7 +29,7 @@ const Gallery = () => {
         backgroundImage: "url('assets/images/chefs-background.png')",
       }}
     >
-      {/* Dark overlay */}
+      {/* Dark overlay for readability */}
       <div className="absolute inset-0 bg-black opacity-50 z-0 pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto">
@@ -37,38 +37,37 @@ const Gallery = () => {
           📸 The Grillery
         </h2>
 
-        <p className="text-center text-lg md:text-xl text-yellow-400 mb-12 font-heading font-bold">
-          Get a peek behind the smoke — where grills blaze, meat sizzles, and
-          heroes pose with ribs like they’re trophies.
+        <p className="text-center text-lg md:text-xl text-yellow-400 mb-10 font-bold max-w-3xl mx-auto leading-relaxed">
+          Get a peek behind the smoke — where grills blaze, meat sizzles, and heroes pose with ribs like they’re trophies.
         </p>
 
-        {/* Desktop grid layout */}
-        <div className="hidden sm:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        {/* Desktop Grid */}
+        <div className="hidden md:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {images.map((src, index) => (
             <div
               key={index}
-              className="bg-[#f4e3c1] border-[6px] border-[#f4e3c1] shadow-xl overflow-hidden transform hover:scale-105 transition duration-300"
+              className="overflow-hidden rounded-lg border-[3px] border-[#F4E0B9] shadow-lg transform hover:scale-105 transition duration-300 bg-black max-w-[95%] mx-auto aspect-[3/4] flex items-center justify-center"
             >
               <img
                 src={src}
                 alt={`Gallery ${index + 1}`}
-                className="w-full h-[22rem] sm:h-[28rem] object-contain bg-black"
+                className="object-contain w-full h-full"
               />
             </div>
           ))}
         </div>
 
-        {/* Mobile horizontal scroll layout */}
-        <div className="sm:hidden flex space-x-6 overflow-x-auto snap-x snap-mandatory px-2 py-4 -mx-2">
+        {/* Mobile Carousel */}
+        <div className="md:hidden flex space-x-4 overflow-x-auto snap-x snap-mandatory px-2">
           {images.map((src, index) => (
             <div
               key={index}
-              className="min-w-[80%] bg-[#f4e3c1] border-[6px] border-[#f4e3c1] shadow-xl snap-start flex-shrink-0 transform hover:scale-105 transition duration-300"
+              className="flex-shrink-0 w-[80%] snap-center rounded-lg border-[3px] border-[#F4E0B9] shadow-md bg-black aspect-[3/4] overflow-hidden"
             >
               <img
                 src={src}
                 alt={`Gallery ${index + 1}`}
-                className="w-full h-[22rem] sm:h-[28rem] object-contain bg-black"
+                className="object-contain w-full h-full"
               />
             </div>
           ))}
@@ -83,17 +82,9 @@ const Gallery = () => {
         </motion.button>
       </div>
 
-      {/* Momentum scroll hiding scrollbar */}
+      {/* Mobile background override */}
       <style>
         {`
-          .snap-x::-webkit-scrollbar {
-            display: none;
-          }
-          .snap-x {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-          }
-
           @media (max-width: 768px) {
             section.gallery-bg {
               background-image: url('assets/images/chefs-background.png') !important;
