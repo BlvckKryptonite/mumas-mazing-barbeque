@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-// Proper imports for images
+// Imports for images
 import headChefImg from '../assets/images/headchef.png';
 import flamebeardImg from '../assets/images/flamebeard-frank.png';
 import sandraImg from '../assets/images/saucy-sandra.png';
@@ -53,6 +53,8 @@ const Chefs = () => {
       {/* Overlay for readability */}
       <div className="absolute inset-0 bg-black opacity-40 z-0" />
 
+      
+
       {/* Main Content */}
       <div className="relative z-10">
         <h2 className="text-4xl md:text-5xl font-heading text-red-500 mb-12 drop-shadow-md uppercase">
@@ -91,6 +93,20 @@ const Chefs = () => {
             </div>
           ))}
         </div>
+
+        {/* Mobile background override */}
+              <style>
+                {`
+                  @media (max-width: 768px) {
+                    section.gallery-bg {
+                      background-image: url('${bgImage}') !important;
+                      background-position: center top !important;
+                      background-repeat: no-repeat !important;
+                      background-size: cover !important;
+                    }
+                  }
+                `}
+              </style>
 
         {/* Call to Action */}
         <motion.button
