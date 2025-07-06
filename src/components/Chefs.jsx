@@ -1,29 +1,36 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+// Proper imports for images
+import headChefImg from '../assets/images/headchef.png';
+import flamebeardImg from '../assets/images/flamebeard-frank.png';
+import sandraImg from '../assets/images/saucy-sandra.png';
+import charlieImg from '../assets/images/charcoal-charlie.png';
+import chefsBg from '../assets/images/chefs-background.png';
+
 const chefs = [
   {
     name: "Muma the Grillmaster",
     role: "Head Chef & Firebender",
-    img: "assets/images/headchef.png",
+    img: headChefImg,
     desc: "Wields tongs like Thor wields Mjölnir. His legendary flame grilled brisket once caused a standing ovation at a silent retreat."
   },
   {
     name: "Flamebeard Frank",
     role: "Smoker Supreme",
-    img: "assets/images/flamebeard-frank.png",
+    img: flamebeardImg,
     desc: "Can smoke a whole rack of ribs with just a glance and a hint of hickory."
   },
   {
     name: "Saucy Sandra",
     role: "Condiment Conjurer",
-    img: "assets/images/saucy-sandra.png",
+    img: sandraImg,
     desc: "Invented 37 secret sauces. All of them perfect. All of them mysterious."
   },
   {
     name: "Charcoal Charlie",
     role: "Pit Magician",
-    img: "assets/images/charcoal-charlie.png",
+    img: charlieImg,
     desc: "Once grilled in a snowstorm and turned it into summer. No one knows how."
   }
 ];
@@ -34,28 +41,15 @@ const Chefs = () => {
 
   return (
     <motion.section
-  initial={{ opacity: 0, y: 30 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.7, ease: "easeOut" }}
-  viewport={{ once: true }}
-  className="relative chefs-bg text-white py-20 px-4 text-center overflow-hidden bg-cover bg-center bg-no-repeat"
-  style={{
-    backgroundImage: "url('assets/images/chefs-background.png')",
-  }}
->
-  {/* Mobile override for background on small screens */}
-  <style>
-    {`
-      @media (max-width: 768px) {
-        section.chefs-bg {
-          background-image: url('assets/images/chefs-background.png') !important;
-          background-position: center top !important;
-          background-size: cover !important;
-        }
-      }
-    `}
-  </style>
-
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, ease: "easeOut" }}
+      viewport={{ once: true }}
+      className="relative chefs-bg text-white py-20 px-4 text-center overflow-hidden bg-cover bg-center bg-no-repeat"
+      style={{
+        backgroundImage: `url(${chefsBg})`,
+      }}
+    >
       {/* Overlay for readability */}
       <div className="absolute inset-0 bg-black opacity-40 z-0" />
 
