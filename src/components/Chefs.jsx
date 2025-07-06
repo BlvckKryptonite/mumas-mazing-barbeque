@@ -55,7 +55,7 @@ const Chefs = () => {
 
       {/* Mobile background override using raw CSS injection
           Used dangerouslySetInnerHTML to ensure React injects
-          the exact CSS string including the resolved image path
+          the exact CSS string including the resolved image path.
       */}
       <style
         dangerouslySetInnerHTML={{
