@@ -17,6 +17,21 @@ const Invitation = () => {
       {/* Background image overlay */}
       <div className="absolute inset-0 bg-black opacity-30 z-0" />
 
+      {/* Mobile background override */}
+            <style>
+              {`
+                @media (max-width: 768px) {
+                  section.gallery-bg {
+                    background-image: url('${invitationBg}') !important;
+                    background-position: center top !important;
+                    background-repeat: no-repeat !important;
+                    background-size: cover !important;
+                  }
+                }
+              `}
+            </style>
+          </motion.section>
+
       {/* Main Content */}
       <div className="relative z-10">
         <h2 className="text-4xl md:text-5xl font-heading uppercase mb-6 tracking-wide text-red-500 drop-shadow-md">
