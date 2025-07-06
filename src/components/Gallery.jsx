@@ -1,20 +1,23 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const images = [
-  "assets/images/food 1.png",
-  "assets/images/food 5.png",
-  "assets/images/food 7.png",
-  "assets/images/food 11.png",
-  "assets/images/food 10.png",
-  "assets/images/food 4.png",
-  "assets/images/food 3.png",
-  "assets/images/food 2.png",
-  "assets/images/food 6.png",
-  "assets/images/food 12.png",
-  "assets/images/food 13.png",
-  "assets/images/food 14.png"
-];
+import bgImage from "../assets/images/chefs-background.png";
+
+// Gallery images
+import img1 from "../assets/images/food 1.png";
+import img2 from "../assets/images/food 5.png";
+import img3 from "../assets/images/food 7.png";
+import img4 from "../assets/images/food 11.png";
+import img5 from "../assets/images/food 10.png";
+import img6 from "../assets/images/food 4.png";
+import img7 from "../assets/images/food 3.png";
+import img8 from "../assets/images/food 2.png";
+import img9 from "../assets/images/food 6.png";
+import img10 from "../assets/images/food 12.png";
+import img11 from "../assets/images/food 13.png";
+import img12 from "../assets/images/food 14.png";
+
+const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12];
 
 const Gallery = () => {
   return (
@@ -26,7 +29,7 @@ const Gallery = () => {
       viewport={{ once: true }}
       className="relative text-white py-20 px-6 md:px-12 font-body gallery-bg bg-cover bg-center overflow-hidden"
       style={{
-        backgroundImage: "url('assets/images/chefs-background.png')",
+        backgroundImage: `url(${bgImage})`,
       }}
     >
       {/* Dark overlay for readability */}
@@ -87,7 +90,7 @@ const Gallery = () => {
         {`
           @media (max-width: 768px) {
             section.gallery-bg {
-              background-image: url('assets/images/chefs-background.png') !important;
+              background-image: url('${bgImage}') !important;
               background-position: center top !important;
               background-repeat: no-repeat !important;
               background-size: cover !important;
