@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import eventBg from "../assets/images/chefs-background.png"; // imported image
 
 const EventDetails = () => {
   return (
@@ -11,7 +12,7 @@ const EventDetails = () => {
       viewport={{ once: true }}
       className="relative bg-black text-white py-20 px-6 md:px-12 font-body event-bg"
       style={{
-        backgroundImage: "url('assets/images/chefs-background.png')",
+        backgroundImage: `url(${eventBg})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
@@ -19,12 +20,12 @@ const EventDetails = () => {
       {/* Dark overlay to enhance contrast */}
       <div className="absolute inset-0 bg-black opacity-60 z-0 pointer-events-none"></div>
 
-      {/* Background override for mobile */}
+      {/* Mobile override for background */}
       <style>
         {`
           @media (max-width: 768px) {
             section.event-bg {
-              background-image: url('assets/images/chefs-background.png') !important;
+              background-image: url('${eventBg}') !important;
               background-position: center top !important;
               background-repeat: no-repeat !important;
               background-size: cover !important;
