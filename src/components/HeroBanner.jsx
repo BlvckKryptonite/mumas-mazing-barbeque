@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import GraphemeSplitter from 'grapheme-splitter';
+import heroBanner from '/assets/images/herobanner.png';
+import heroBannerVertical from '/assets/images/herobannervertical.png';
 
 const splitter = new GraphemeSplitter();
 const headlineChars = splitter.splitGraphemes("🔥 Muma’s ‘Mazing BBQ 🔥");
@@ -13,8 +15,7 @@ const HeroBanner = () => {
       transition={{ type: 'spring', stiffness: 60, damping: 10 }}
       className="relative w-full min-h-[80vh] md:h-screen bg-cover bg-no-repeat bg-center flex items-center px-4 sm:px-6 md:px-20"
       style={{
-        backgroundImage: `
-          url('assets/images/herobanner.png')`,
+        backgroundImage: `url(${heroBanner})`,
       }}
     >
       {/* Mobile background override */}
@@ -22,7 +23,7 @@ const HeroBanner = () => {
         {`
           @media (max-width: 768px) {
             section {
-              background-image: url('/assets/images/herobannervertical.png') !important;
+              background-image: url(${heroBannerVertical}) !important;
               background-position: center top !important;
             }
           }
@@ -32,7 +33,6 @@ const HeroBanner = () => {
       {/* Background picture overlay */}
       <div className="absolute inset-0 bg-black bg-opacity-20 z-0"></div>
 
-      {/* Headline and tagline wrapper (centered on mobile, right on desktop) */}
       <div className="z-10 w-full max-w-[900px] text-center md:text-right md:ml-auto md:mr-12 lg:mr-24">
         <motion.h1
           className="text-3xl sm:text-4xl md:text-6xl lg:text-6xl xl:text-[4rem] font-heading text-white mb-4 leading-tight tracking-wider"
@@ -63,7 +63,6 @@ const HeroBanner = () => {
           ))}
         </motion.h1>
 
-        {/* Tagline animation */}
         <motion.p
           className="text-base sm:text-lg md:text-2xl font-body italic text-white px-2 sm:px-0"
           initial={{ opacity: 0, y: 20 }}
@@ -74,7 +73,6 @@ const HeroBanner = () => {
         </motion.p>
       </div>
 
-      {/* ⬇ Scroll cue */}
       <motion.div
         className="absolute bottom-4 sm:bottom-6 left-1/2 transform -translate-x-1/2 text-white text-2xl animate-bounce"
         initial={{ opacity: 0 }}
