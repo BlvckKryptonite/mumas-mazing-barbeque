@@ -22,7 +22,7 @@ const HeroBanner = () => {
         {`
           @media (max-width: 768px) {
             section {
-              background-image: url('assets/images/herobannervertical.png') !important;
+              background-image: url('/assets/images/herobannervertical.png') !important;
               background-position: center top !important;
             }
           }
