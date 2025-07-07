@@ -15,7 +15,13 @@
   }
 }
 
-/* 🔥 Custom utility to apply the glow animation to any element */
+/* Apply the glow animation to any element */
 .animate-glow {
-  animation: glow 1.5s infinite ease-in-out;
+  animation: glow 1.7s infinite ease-in-out;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
 }

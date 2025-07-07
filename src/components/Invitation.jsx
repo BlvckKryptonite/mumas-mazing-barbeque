@@ -5,7 +5,7 @@ import invitationBg from "../assets/images/invitation-background.png";
 const Invitation = () => {
   return (
     <motion.section
-      className="invitation-bg relative bg-black text-red-100 py-24 px-6 text-center overflow-hidden bg-cover bg-center bg-no-repeat"
+      className="invitation-bg relative text-red-100 py-24 px-6 text-center overflow-hidden bg-cover bg-center bg-no-repeat"
       style={{
         backgroundImage: `url(${invitationBg})`, // For desktop
       }}
