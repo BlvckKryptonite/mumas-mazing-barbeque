@@ -13,7 +13,7 @@ const HeroBanner = () => {
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ type: 'spring', stiffness: 60, damping: 10 }}
-      className="relative w-full min-h-[80vh] md:h-screen bg-cover bg-no-repeat bg-center flex items-center px-4 sm:px-6 md:px-20"
+      className="relative w-full min-h-[80vh] md:h-screen bg-cover bg-no-repeat bg-center flex items-center px-4 sm:px-6 md:px-20 overflow-hidden" // ✨ Removed any extra margin/padding
       style={{
         backgroundImage: `url(${heroBanner})`,
       }}
@@ -25,6 +25,8 @@ const HeroBanner = () => {
             section {
               background-image: url(${heroBannerVertical}) !important;
               background-position: center top !important;
+              background-size: cover !important;
+              background-repeat: no-repeat !important;
             }
           }
         `}
@@ -33,8 +35,11 @@ const HeroBanner = () => {
       {/* Background overlay */}
       <div className="absolute inset-0 bg-black bg-opacity-20 z-0"></div>
 
-      {/* Headline + Tagline */}
-      <div className="z-10 w-full max-w-[900px] text-center md:text-right md:ml-auto md:mr-12 lg:mr-24">
+      {/* Gradient fade to next section */}
+      <div className="absolute bottom-0 w-full h-10 bg-gradient-to-b from-transparent to-black z-10"></div>
+
+      {/* Headline and Tagline */}
+      <div className="z-20 w-full max-w-[900px] text-center md:text-right md:ml-auto md:mr-12 lg:mr-24">
         <motion.h1
           className="text-3xl sm:text-4xl md:text-6xl lg:text-6xl xl:text-[4rem] font-heading text-white mb-4 leading-tight tracking-wider"
           initial="hidden"
@@ -76,7 +81,7 @@ const HeroBanner = () => {
 
       {/* Scroll Cue */}
       <motion.div
-        className="absolute bottom-4 sm:bottom-6 left-1/2 transform -translate-x-1/2 text-white text-2xl animate-bounce"
+        className="absolute bottom-4 sm:bottom-6 left-1/2 transform -translate-x-1/2 text-white text-2xl animate-bounce z-20"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2 }}
