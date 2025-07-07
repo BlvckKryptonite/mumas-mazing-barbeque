@@ -8,7 +8,8 @@ import FAQ from "./components/FAQ";
 
 function App() {
   return (
-    <main className="bg-gray-100 font-sans text-gray-800">
+    <main className="bg-black text-white font-body overflow-x-hidden">
+
       <HeroBanner />
       <div className="w-full h-4 bg-gradient-to-r from-red-500 to-yellow-400 my-8" />
       <Invitation />
