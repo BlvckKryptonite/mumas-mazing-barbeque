@@ -60,7 +60,7 @@ const Chefs = () => {
 
       {/* Main Content */}
       <div className="relative z-10">
-        <h2 className="text-4xl md:text-5xl font-heading text-red-500 mb-12 uppercase drop-shadow-md">
+        <h2 className="text-4xl md:text-5xl font-heading text-[#db2626] mb-12 uppercase drop-shadow-md">
           Meet Our Chefs
         </h2>
 

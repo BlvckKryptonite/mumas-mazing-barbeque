@@ -38,7 +38,7 @@ const EventDetails = () => {
       <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
         {/* Text Content */}
         <div className="space-y-6 text-center lg:text-left">
-          <h2 className="text-4xl md:text-5xl font-heading text-red-500 uppercase drop-shadow-md">
+          <h2 className="text-4xl md:text-5xl font-heading text-[#db2626] uppercase drop-shadow-md">
             Event Details
           </h2>
 

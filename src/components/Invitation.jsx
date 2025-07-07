@@ -26,7 +26,7 @@ const Invitation = () => {
 
       {/* Main Content */}
       <div className="relative z-10">
-        <h2 className="text-4xl md:text-5xl font-heading uppercase mb-6 tracking-wide text-red-500 drop-shadow-md">
+        <h2 className="text-4xl md:text-5xl font-heading uppercase mb-6 tracking-wide text-[#db2626] drop-shadow-md">
           You’re Invited!
         </h2>
 

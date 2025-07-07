@@ -36,8 +36,8 @@ const Gallery = () => {
       <div className="absolute inset-0 bg-black opacity-50 z-0 pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-heading text-red-500 text-center mb-6 uppercase drop-shadow-md">
-          📸 The Grillery
+        <h2 className="text-4xl md:text-5xl font-heading text-[#db2626] text-center mb-6 uppercase drop-shadow-md">
+          The Grillery 📸
         </h2>
 
         <p className="text-center text-lg md:text-xl text-yellow-400 mb-10 font-bold max-w-3xl mx-auto leading-relaxed">

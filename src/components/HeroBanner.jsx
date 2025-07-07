@@ -13,7 +13,7 @@ const HeroBanner = () => {
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ type: 'spring', stiffness: 60, damping: 10 }}
-      className="relative w-full min-h-[80vh] md:h-screen bg-cover bg-no-repeat bg-center flex items-center px-4 sm:px-6 md:px-20 overflow-hidden" // ✨ Removed any extra margin/padding
+      className="relative w-full min-h-[80vh] md:h-screen bg-cover bg-no-repeat bg-center flex items-center px-4 sm:px-6 md:px-20 overflow-hidden"
       style={{
         backgroundImage: `url(${heroBanner})`,
       }}
