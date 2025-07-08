@@ -67,22 +67,40 @@ const Chefs = () => {
         />
 
         <div className="max-w-2xl mx-auto mb-16">
-          <div className="bg-black border-4 border-white p-6 rounded-lg shadow-lg min-h-[400px]">
+          <motion.div
+  initial={{ opacity: 0, scale: 0.95 }}
+  whileInView={{ opacity: 1, scale: 1 }}
+  transition={{ duration: 0.6, ease: "easeOut" }}
+  viewport={{ once: true }}
+  className="bg-[#1f1f1f] border-4 border-yellow-400 p-6 rounded-lg shadow-lg min-h-[400px] glow-on-scroll hover:glow-on-hover transition-all duration-300"
+>
             <img src={headChef.img} alt={headChef.name} className="w-full object-contain mb-4 rounded-md max-h-[400px]" />
             <h3 className="text-2xl font-heading text-yellow-300">{headChef.name}</h3>
             <p className="italic text-sm">{headChef.role}</p>
             <p className="mt-2 font-body">{headChef.desc}</p>
-          </div>
+          </motion.div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {otherChefs.map((chef, idx) => (
-            <div key={idx} className="bg-black border-2 border-white p-6 rounded-lg shadow-md min-h-[360px]">
-              <img src={chef.img} alt={chef.name} className="w-full object-contain mb-4 rounded-md max-h-[400px]" />
-              <h3 className="text-xl font-heading text-yellow-300">{chef.name}</h3>
-              <p className="italic text-sm">{chef.role}</p>
-              <p className="mt-2 font-body">{chef.desc}</p>
-            </div>
+            // Card Background Glow Effect
+        <motion.div
+  key={idx}
+  initial={{ opacity: 0, scale: 0.95 }}
+  whileInView={{ opacity: 1, scale: 1 }}
+  transition={{ duration: 0.6, ease: "easeOut", delay: idx * 0.2 }}
+  viewport={{ once: true }}
+  className="bg-black border-2 border-white p-6 rounded-lg shadow-md min-h-[360px] glow-on-scroll hover:glow-on-hover transition-all duration-300"
+>
+  <img
+    src={chef.img}
+    alt={chef.name}
+    className="w-full object-contain mb-4 rounded-md max-h-[400px]"
+  />
+  <h3 className="text-xl font-heading text-yellow-300">{chef.name}</h3>
+  <p className="italic text-sm">{chef.role}</p>
+  <p className="mt-2 font-body">{chef.desc}</p>
+</motion.div>
           ))}
         </div>
 
