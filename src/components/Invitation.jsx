@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import invitationBg from "../assets/images/invitation-background.png";
+import SplitWords from "./animations/SplitWords";
 
 const Invitation = () => {
   return (
@@ -26,9 +27,12 @@ const Invitation = () => {
 
       {/* Main Content */}
       <div className="relative z-10">
-        <h2 className="text-4xl md:text-5xl font-heading uppercase mb-6 tracking-wide text-[#db2626] drop-shadow-md">
-          You’re Invited!
-        </h2>
+
+       <SplitWords
+  text="🔥 You’re Invited! 🔥"
+  className="text-4xl md:text-5xl font-heading uppercase mb-6 tracking-wide text-[#b91c1c] drop-shadow-md"
+/>
+
 
         <p className="max-w-3xl mx-auto text-lg md:text-xl font-body leading-relaxed">
           🍖 <strong className="text-yellow-400">Enter the mouth-watering BBQverse...</strong><br />
