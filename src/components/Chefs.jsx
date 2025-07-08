@@ -9,7 +9,7 @@ import chefsBg from '../assets/images/chefs-background.png';
 const chefs = [
   {
     name: "Muma the Grillmaster",
-    role: "Head Chef & Firebender",
+    role: "Head Chef & Chief Firebender",
     img: headChefImg,
     desc: "Wields tongs like Thor wields Mjölnir..."
   },
