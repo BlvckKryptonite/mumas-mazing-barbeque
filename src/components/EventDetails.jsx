@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import eventBg from "../assets/images/chefs-background.png"; // imported image
+import SplitWords from "./animations/SplitWords";
 
 const EventDetails = () => {
   return (
@@ -38,9 +39,10 @@ const EventDetails = () => {
       <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
         {/* Text Content */}
         <div className="space-y-6 text-center lg:text-left">
-          <h2 className="text-4xl md:text-5xl font-heading text-[#db2626] uppercase drop-shadow-md">
-            Event Details
-          </h2>
+          <SplitWords
+          text="Event Details"
+          className="text-4xl md:text-5xl font-heading uppercase mb-6 tracking-wide text-[#b91c1c] drop-shadow-md"
+        />
 
           <p className="text-2xl font-bold text-yellow-300 leading-tight">
             🔥 Saturday, August 9<br />

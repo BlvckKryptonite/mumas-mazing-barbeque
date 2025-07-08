@@ -5,31 +5,32 @@ import flamebeardImg from '../assets/images/flamebeard-frank.png';
 import sandraImg from '../assets/images/saucy-sandra.png';
 import charlieImg from '../assets/images/charcoal-charlie.png';
 import chefsBg from '../assets/images/chefs-background.png';
+import SplitWords from "./animations/SplitWords";
 
 const chefs = [
   {
     name: "Muma the Grillmaster",
     role: "Head Chef & Chief Firebender",
     img: headChefImg,
-    desc: "Wields tongs like Thor wields Mjölnir..."
+    desc: "Wields tongs like Thor wields Mjölnir. His legendary flame grilled buffalo wings once caused a standing ovation at a silent retreat."
   },
   {
     name: "Flamebeard Frank",
     role: "Smoker Supreme",
     img: flamebeardImg,
-    desc: "Can smoke a whole rack of ribs with just a glance..."
+    desc: "Can smoke a whole rack of ribs with just a glance. Rubbed ribs so perfectly, even vegetarians shed a tear."
   },
   {
     name: "Saucy Sandra",
     role: "Condiment Conjurer",
     img: sandraImg,
-    desc: "Invented 37 secret sauces..."
+    desc: "Invented 37 secret sauces. All of them perfect. They say her chili is so hot, it once grilled the bun."
   },
   {
     name: "Charcoal Charlie",
     role: "Pit Magician",
     img: charlieImg,
-    desc: "Once grilled in a snowstorm..."
+    desc: "Charcoal lights itself when he enters. Once grilled in a snowstorm — turned it into summer. No one knows how."
   }
 ];
 
@@ -60,9 +61,10 @@ const Chefs = () => {
 
       {/* Main Content */}
       <div className="relative z-10">
-        <h2 className="text-4xl md:text-5xl font-heading text-[#db2626] mb-12 uppercase drop-shadow-md">
-          Meet Our Chefs
-        </h2>
+        <SplitWords
+          text="Meet Our Chefs"
+          className="text-4xl md:text-5xl font-heading uppercase mb-6 tracking-wide text-[#b91c1c] drop-shadow-md"
+        />
 
         <div className="max-w-2xl mx-auto mb-16">
           <div className="bg-black border-4 border-white p-6 rounded-lg shadow-lg min-h-[400px]">

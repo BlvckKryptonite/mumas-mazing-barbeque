@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import SplitWords from "./animations/SplitWords";
 
 import bgImage from "../assets/images/chefs-background.png";
 
@@ -17,7 +18,10 @@ import img10 from "../assets/images/food 12.png";
 import img11 from "../assets/images/food 13.png";
 import img12 from "../assets/images/food 14.png";
 
-const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12];
+const images = [
+  img1, img2, img3, img4, img5, img6,
+  img7, img8, img9, img10, img11, img12,
+];
 
 const Gallery = () => {
   return (
@@ -36,13 +40,21 @@ const Gallery = () => {
       <div className="absolute inset-0 bg-black opacity-50 z-0 pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-heading text-[#db2626] text-center mb-6 uppercase drop-shadow-md">
-          The Grillery 📸
-        </h2>
+        <div className="text-center mb-6">
+  <SplitWords
+    speed={2}
+    className="text-4xl md:text-5xl font-heading text-[#db2626] uppercase drop-shadow-md inline-block"
+  >
+    The Grillery 📸
+  </SplitWords>
+</div>
 
-        <p className="text-center text-lg md:text-xl text-yellow-400 mb-10 font-bold max-w-3xl mx-auto leading-relaxed">
-          Get a peek behind the smoke — where grills blaze, meat sizzles, and heroes pose with ribs like they’re trophies.
-        </p>
+<div className="text-center text-lg md:text-xl text-yellow-400 mb-10 font-bold max-w-3xl mx-auto leading-relaxed">
+  <SplitWords speed={3}>
+    Get a peek behind the smoke — where grills blaze, meat sizzles, and heroes pose with ribs like they’re trophies.
+  </SplitWords>
+</div>
+
 
         {/* Desktop Grid */}
         <div className="hidden md:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
@@ -61,7 +73,7 @@ const Gallery = () => {
         </div>
 
         {/* Mobile Carousel */}
-        <div className="md:hidden flex space-x-4 overflow-x-auto snap-x snap-mandatory px-2">
+        <div className="md:hidden flex space-x-4 overflow-x-auto snap-x snap-mandatory px-2 mt-10">
           {images.map((src, index) => (
             <div
               key={index}

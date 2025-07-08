@@ -27,22 +27,40 @@ const Invitation = () => {
 
       {/* Main Content */}
       <div className="relative z-10">
-
-       <SplitWords
-  text="🔥 You’re Invited! 🔥"
+        <SplitWords
+  text="You’re Invited!"
   className="text-4xl md:text-5xl font-heading uppercase mb-6 tracking-wide text-[#b91c1c] drop-shadow-md"
 />
 
+  <p className="max-w-3xl mx-auto text-lg md:text-xl font-body leading-relaxed">
+    <SplitWords>
+      🍖{" "}
+      <strong className="text-yellow-400">
+        Enter the mouth-watering BBQverse...
+      </strong>{" "}
+      A world of sizzling ribs, juicy steaks, succulent strips and all-around grilled goodness.
+    </SplitWords>
+  </p>
 
-        <p className="max-w-3xl mx-auto text-lg md:text-xl font-body leading-relaxed">
-          🍖 <strong className="text-yellow-400">Enter the mouth-watering BBQverse...</strong><br />
-          A world of sizzling ribs, juicy steaks, succulent strips and all-around grilled goodness.
-        </p>
+  <p className="max-w-3xl mx-auto text-lg md:text-xl font-body mt-6 leading-relaxed">
+    <SplitWords>
+      🌴{" "}
+      <span className="text-green-400 font-semibold">
+        Set in the fiery heart of the neighborhood
+      </span>
+      , where smoke swirls like battle cries and tongs clash like swords — Muma's backyard transforms into a grill-powered arena of flavor!
+    </SplitWords>
+  </p>
 
-        <p className="max-w-3xl mx-auto text-lg md:text-xl font-body mt-6 leading-relaxed">
-          🌴 <span className="text-green-400 font-semibold">Set in the fiery heart of the neighborhood</span>, where smoke
-          swirls like battle cries and tongs clash like swords — Muma's backyard transforms into a grill-powered arena of flavor!
-        </p>
+  <p className="max-w-3xl mx-auto text-lg md:text-xl font-body mt-6 leading-relaxed">
+    <SplitWords>
+      ♨️ {" "}
+      <span className="text-[#FF0000] font-semibold">
+        This isn’t just a barbeque — it’s a culinary showdown of epic proportions. 
+      </span>
+       {" "} Grab your tickets. Claim your plate. Become part of the legend.
+    </SplitWords>
+  </p>
 
         <motion.button
           whileHover={{

@@ -38,7 +38,7 @@ const FAQ = () => {
     >
       <div className="max-w-4xl mx-auto">
         <h2 className="text-4xl md:text-5xl text-center font-heading text-[#db2626] uppercase mb-10 drop-shadow-md">
-          Frequently Asked Questions ❓ 
+          Frequently Asked Questions
         </h2>
 
         <div className="space-y-6">
