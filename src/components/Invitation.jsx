@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import invitationBg from "../assets/images/invitation-background.png";
 import SplitWords from "./animations/SplitWords";
+import { Link } from "react-router-dom"; // Tickets page
 
 const Invitation = () => {
   return (
@@ -62,19 +63,21 @@ const Invitation = () => {
     </SplitWords>
   </p>
 
-        <motion.button
-          whileHover={{
-            scale: 1.07,
-            rotate: [-1, 1, 0],
-            transition: { yoyo: Infinity, duration: 0.3 },
-          }}
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 1.2, duration: 0.5 }}
-          className="mt-12 px-8 py-3 bg-red-600 hover:bg-red-700 text-white font-bold font-heading text-xl rounded-none border-2 border-white shadow-lg transition-transform"
-        >
-          Get Tickets
-        </motion.button>
+        <Link to="/tickets">
+  <motion.button
+    whileHover={{
+      scale: 1.07,
+      rotate: [-1, 1, 0],
+      transition: { yoyo: Infinity, duration: 0.3 },
+    }}
+    initial={{ opacity: 0, scale: 0.9 }}
+    whileInView={{ opacity: 1, scale: 1 }}
+    transition={{ delay: 1.2, duration: 0.5 }}
+    className="mt-12 px-8 py-3 bg-red-600 hover:bg-red-700 text-white font-bold font-heading text-xl rounded-none border-2 border-white shadow-lg transition-transform"
+  >
+    Get Tickets
+  </motion.button>
+</Link>
       </div>
     </motion.section>
   );
