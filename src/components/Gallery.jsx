@@ -1,8 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import SplitWords from "./animations/SplitWords";
-
 import bgImage from "../assets/images/chefs-background.png";
+import { Link } from "react-router-dom"; // Tickets page
 
 // Gallery images
 import img1 from "../assets/images/food 1.png";
@@ -19,8 +19,18 @@ import img11 from "../assets/images/food 13.png";
 import img12 from "../assets/images/food 14.png";
 
 const images = [
-  img1, img2, img3, img4, img5, img6,
-  img7, img8, img9, img10, img11, img12,
+  img1,
+  img2,
+  img3,
+  img4,
+  img5,
+  img6,
+  img7,
+  img8,
+  img9,
+  img10,
+  img11,
+  img12,
 ];
 
 const Gallery = () => {
@@ -41,20 +51,20 @@ const Gallery = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto">
         <div className="text-center mb-6">
-  <SplitWords
-    speed={2}
-    className="text-4xl md:text-5xl font-heading text-[#db2626] uppercase drop-shadow-md inline-block"
-  >
-    The Grillery 📸
-  </SplitWords>
-</div>
+          <SplitWords
+            speed={2}
+            className="text-4xl md:text-5xl font-heading text-[#db2626] uppercase drop-shadow-md inline-block"
+          >
+            The Grillery 📸
+          </SplitWords>
+        </div>
 
-<div className="text-center text-lg md:text-xl text-yellow-400 mb-10 font-bold max-w-3xl mx-auto leading-relaxed">
-  <SplitWords speed={3}>
-    Get a peek behind the smoke — where grills blaze, meat sizzles, and heroes pose with ribs like they’re trophies.
-  </SplitWords>
-</div>
-
+        <div className="text-center text-lg md:text-xl text-yellow-400 mb-10 font-bold max-w-3xl mx-auto leading-relaxed">
+          <SplitWords speed={3}>
+            Get a peek behind the smoke — where grills blaze, meat sizzles, and
+            heroes pose with ribs like they’re trophies.
+          </SplitWords>
+        </div>
 
         {/* Desktop Grid */}
         <div className="hidden md:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
@@ -88,13 +98,23 @@ const Gallery = () => {
           ))}
         </div>
 
-        <motion.button
-          whileHover={{ scale: 1.07 }}
-          transition={{ duration: 0.4 }}
-          className="mt-16 mx-auto block px-10 py-4 bg-red-600 hover:bg-red-700 text-white font-heading text-lg rounded-none border-2 border-white shadow-md transition-transform hover:scale-110"
-        >
-          Get Tickets
-        </motion.button>
+        <div className="text-center mt-10">
+          <Link to="/tickets">
+            <motion.button
+              whileHover={{
+                scale: 1.07,
+                rotate: [-1, 1, 0],
+                transition: { yoyo: Infinity, duration: 0.3 },
+              }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 1.2, duration: 0.5 }}
+              className="mt-12 px-8 py-3 bg-red-600 hover:bg-red-700 text-white font-bold font-heading text-xl rounded-none border-2 border-white shadow-lg transition-transform"
+            >
+              Get Tickets
+            </motion.button>
+          </Link>
+        </div>
       </div>
 
       {/* Mobile background override */}

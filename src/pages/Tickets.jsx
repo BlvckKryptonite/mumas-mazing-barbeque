@@ -11,14 +11,17 @@ const pricingTiers = [
     title: "GENERAL ADMISSION",
     price: "$25",
     features: [
-      "Access to all grilling areas",
-      "Mouth-watering delights",
+      "Entry to the BBQ Arena",
+      "Access to all mouth watering delights",
+      "One BBQ hero plate",
+      "Live music & games",
     ],
   },
   {
     title: "VIP PASS",
     price: "$50",
     features: [
+      "Everything in General Admission",
       "Priority seating",
       "Muma’s legendary wing platter",
     ],
@@ -27,8 +30,11 @@ const pricingTiers = [
     title: "ULTIMATE BBQ EXPERIENCE",
     price: "$75",
     features: [
-      "All VIP perks",
+      "All VIP Pass perks",
       "Backstage grill tour",
+      "Access to BBQverse buffet",
+      "Limited-edition BBQverse apron",
+      
     ],
   },
 ];
@@ -60,7 +66,7 @@ const Tickets = () => {
         </h1>
 
         <p className="text-xl md:text-2xl text-white mb-16 max-w-3xl mx-auto">
-          Snag your spot at the feast of the year and witness the flame-fueled magic!
+          Choose your tier — every ticket comes with legendary flavors, fierce vibes, and enough smoke to summon the BBQ gods.
         </p>
 
         {/* Pricing Grid */}
@@ -78,7 +84,7 @@ const Tickets = () => {
               <h3 className="text-2xl font-heading text-yellow-300 mb-2">
                 {tier.title}
               </h3>
-              <p className="text-3xl font-bold text-red-500 mb-4">
+              <p className="text-3xl font-bold text-[#D2042D] mb-4">
                 {tier.price}
               </p>
               <ul className="text-left text-white space-y-2">
