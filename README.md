@@ -51,6 +51,21 @@ This project was created as a fun, high-impact frontend application using React,
 
 ---
 
+## 📱 Responsiveness
+
+Muma’s ‘Mazing BBQ is fully responsive and optimized for seamless viewing across all devices. Whether you're browsing on a large desktop screen or a small mobile phone, the layout adapts beautifully to ensure clarity, usability, and fun.
+
+Responsive design was achieved using **Tailwind CSS** with custom breakpoints, fluid typography, and flexible layout structures to preserve the comic-style vibe on any screen size.
+
+### Desktop & Mobile Mockups
+
+
+![Desktop & Mobile Device Mockup](src/assets/images/mmb-mockup.png) 
+
+
+---
+
+
 ## 🔲 Wireframes
 
 Below is the initial wireframe sketch and a refined digital wireframe for the Muma’s ‘Mazing BBQ landing page. These mockups were created to outline the structure, flow, and content hierarchy of the site in a fun and intuitive way.
