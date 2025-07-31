@@ -73,7 +73,7 @@ const Chefs = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
             viewport={{ once: true }}
-            className="bg-[#1f1f1f] border-4 border-yellow-400 p-6 rounded-lg shadow-lg min-h-[400px] glow-on-scroll hover:glow-on-hover transition-all duration-300"
+            className="bg-black border-4 border-yellow-400 p-6 rounded-lg shadow-lg min-h-[400px] head-chef-glow hover:head-chef-glow-hover transition-all duration-300"
           >
             <img
               src={headChef.img}

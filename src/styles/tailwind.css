@@ -55,12 +55,22 @@ body, #root {
   }
 }
 
+/* Head Chef Fiery Glow Animation */
+@keyframes headChefFireGlow {
+  0%, 100% {
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.7), 0 0 35px rgba(255, 77, 0, 0.5), 0 0 45px rgba(255, 140, 0, 0.3), 0 0 55px rgba(255, 0, 0, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(255, 0, 0, 0.9), 0 0 45px rgba(255, 77, 0, 0.7), 0 0 55px rgba(255, 140, 0, 0.5), 0 0 65px rgba(255, 0, 0, 0.3);
+  }
+}
+
 /* Tailwind-compatible utilities with reduced complexity */
 .glow-on-scroll {
   animation: glowPulse 3s ease-in-out infinite;
 }
 
-.hover\\:glow-on-hover:hover {
+.hover\:glow-on-hover:hover {
   animation: glowPulse 3s ease-in-out infinite;
 }
 
@@ -68,4 +78,14 @@ body, #root {
   animation: bbqFlameGlow 3s ease-in-out infinite;
   will-change: box-shadow;
   transform: translateZ(0); /* Force hardware acceleration */
+}
+
+.head-chef-glow {
+  animation: headChefFireGlow 2.5s ease-in-out infinite;
+  will-change: box-shadow;
+  transform: translateZ(0);
+}
+
+.hover\:head-chef-glow-hover:hover {
+  animation: headChefFireGlow 2s ease-in-out infinite;
 }
