@@ -1,6 +1,7 @@
 {
   "name": "mumas-mazing-barbeque",
   "version": "1.0.0",
+  "type": "module",
   "homepage": "https://blvckkryptonite.github.io/mumas-mazing-barbeque",
   "scripts": {
     "dev": "vite --port 3000",
