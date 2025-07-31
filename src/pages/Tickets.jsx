@@ -74,12 +74,11 @@ const Tickets = () => {
           {pricingTiers.map((tier, index) => (
             <motion.div
               key={index}
-              whileHover={{ scale: 1.05 }}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
               viewport={{ once: true }}
-              className="border-2 border-yellow-400 rounded-lg p-6 shadow-lg animate-flame bg-black bg-opacity-80"
+              className="border-2 border-yellow-400 rounded-lg p-6 shadow-lg bbq-flame-glow bg-black bg-opacity-80 relative overflow-hidden"
             >
               <h3 className="text-2xl font-heading text-yellow-300 mb-2">
                 {tier.title}
