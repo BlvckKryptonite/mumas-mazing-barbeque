@@ -16,12 +16,16 @@ const LoadingScreen = ({ onComplete }) => {
     >
       <div className="text-center">
         <motion.div
-          className="text-6xl font-heading text-red-500 mb-4"
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
+          className="w-24 h-24 mb-4 flex items-center justify-center"
+          initial={{ scale: 0, rotate: -180 }}
+          animate={{ scale: 1, rotate: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          🔥
+          <img 
+            src="/attached_assets/mmb _1753991810215.png" 
+            alt="Muma's M Logo" 
+            className="w-full h-full object-contain filter drop-shadow-lg"
+          />
         </motion.div>
         <motion.h1
           className="text-4xl font-heading text-white mb-2"
