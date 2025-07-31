@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { FaArrowLeft } from "react-icons/fa";
+import { FaArrowLeft, FaCheck } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import SplitWords from "../components/animations/SplitWords";
 import FAQ from "../components/FAQ";
@@ -46,8 +46,9 @@ const pricingTiers = [
 const Tickets = () => {
   const [selectedTier, setSelectedTier] = useState(null);
   const [showCheckout, setShowCheckout] = useState(false);
+  const [quantity, setQuantity] = useState(1);
 
-  const handleTicketSelect = (tier) => {
+  const handleBuyNow = (tier) => {
     setSelectedTier(tier);
     setShowCheckout(true);
   };
@@ -89,38 +90,56 @@ const Tickets = () => {
         {/* Pricing Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
           {pricingTiers.map((tier, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
-              viewport={{ once: true }}
-              className="border-2 border-yellow-400 rounded-lg p-6 shadow-lg bbq-flame-glow bg-black bg-opacity-80 relative overflow-hidden"
-            >
-              <h3 className="text-2xl font-heading text-yellow-300 mb-2">
-                {tier.title}
-              </h3>
-              <p className="text-3xl font-bold text-[#D2042D] mb-4">
-                {tier.price}
-              </p>
-              <ul className="text-left text-white space-y-2">
-                {tier.features.map((feature, i) => (
-                  <li key={i}>✔️ {feature}</li>
-                ))}
-              </ul>
-              <button 
-                onClick={() => handleTicketSelect(tier)}
-                className="mt-6 w-full bg-red-600 hover:bg-red-700 text-white py-2 px-4 font-heading border-2 border-white transition hover:scale-105"
+              <motion.div
+                key={tier.title}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-black border-2 border-yellow-400 p-6 relative overflow-hidden group"
               >
-                Get This Ticket
-              </button>
-            </motion.div>
-          ))}
+                {/* Animated BBQ glow effects */}
+                <div className="absolute inset-0 opacity-60">
+                  <div className="absolute top-2 left-2 w-8 h-8 bg-red-500 rounded-full blur-md animate-pulse"></div>
+                  <div className="absolute top-4 right-4 w-6 h-6 bg-orange-400 rounded-full blur-sm animate-ping" style={{animationDelay: '0.5s'}}></div>
+                  <div className="absolute bottom-6 left-6 w-4 h-4 bg-yellow-300 rounded-full blur-sm animate-pulse" style={{animationDelay: '1s'}}></div>
+                  <div className="absolute bottom-4 right-8 w-5 h-5 bg-red-400 rounded-full blur-md animate-ping" style={{animationDelay: '1.5s'}}></div>
+                </div>
+
+                {/* Fire glow background */}
+                <div className="absolute inset-0 bg-gradient-to-br from-red-600/30 via-orange-500/25 to-yellow-400/30 opacity-40 group-hover:opacity-60 transition-opacity duration-500"></div>
+
+                {/* Smoke/heat effect */}
+                <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-16 h-8 bg-gradient-to-t from-transparent to-gray-400/20 rounded-full blur-md animate-pulse"></div>
+
+                <div className="relative z-10">
+                  <h3 className="text-2xl font-heading text-yellow-400 mb-4 group-hover:text-yellow-300 transition-colors">
+                    {tier.title}
+                  </h3>
+                  <div className="text-4xl font-bold text-white mb-6 group-hover:text-yellow-100 transition-colors">
+                    {tier.price}
+                  </div>
+                  <ul className="space-y-3 mb-8">
+                    {tier.features.map((feature, featureIndex) => (
+                      <li key={featureIndex} className="flex items-center text-gray-300 group-hover:text-gray-200 transition-colors">
+                        <FaCheck className="text-green-400 mr-3 flex-shrink-0" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                  <button
+                    onClick={() => handleBuyNow(tier)}
+                    className="w-full bg-red-600 hover:bg-red-700 text-white py-3 px-6 font-heading border-2 border-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-red-500/50"
+                  >
+                    BUY NOW 🔥
+                  </button>
+                </div>
+              </motion.div>
+            ))}
         </div>
 
         {/* CTA */}
         <motion.button
-          onClick={() => handleTicketSelect(pricingTiers[0])}
+          onClick={() => handleBuyNow(pricingTiers[0])}
           whileHover={{ scale: 1.08 }}
           className="text-white text-xl font-heading bg-red-600 hover:bg-red-700 px-10 py-4 border-2 border-white shadow-lg uppercase tracking-wide"
         >
@@ -130,9 +149,15 @@ const Tickets = () => {
 
       {/* Stripe Checkout Modal */}
       {showCheckout && selectedTier && (
-        <StripeCheckout 
-          tier={selectedTier} 
-          onClose={closeCheckout} 
+        <StripeCheckout
+          tier={selectedTier}
+          quantity={quantity}
+          onQuantityChange={setQuantity}
+          onClose={() => {
+            setShowCheckout(false);
+            setSelectedTier(null);
+            setQuantity(1);
+          }}
         />
       )}
     </motion.section>

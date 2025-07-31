@@ -22,7 +22,7 @@ const Home = () => {
           <LoadingScreen onComplete={() => setIsLoading(false)} />
         )}
       </AnimatePresence>
-      
+
       {!isLoading && (
         <main className="bg-black text-white font-body overflow-x-hidden w-full max-w-full">
           <FireTransition>
@@ -65,6 +65,15 @@ const Home = () => {
 };
 
 function App() {
+  const [showLoading, setShowLoading] = useState(() => {
+    // Skip loading if user has already seen it in this session
+    return !sessionStorage.getItem('hasSeenLoading');
+  });
+
+  const handleLoadingComplete = () => {
+    setShowLoading(false);
+    sessionStorage.setItem('hasSeenLoading', 'true');
+  };
   return (
     <Router>
       <Routes>

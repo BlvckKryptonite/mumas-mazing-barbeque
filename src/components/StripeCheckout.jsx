@@ -1,11 +1,10 @@
-
 import React, { useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { motion } from 'framer-motion';
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 
-const StripeCheckout = ({ tier, onClose }) => {
+const StripeCheckout = ({ tier, onClose, quantity = 1, onQuantityChange }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -15,7 +14,7 @@ const StripeCheckout = ({ tier, onClose }) => {
 
     try {
       const stripe = await stripePromise;
-      
+
       const response = await fetch('/api/create-checkout-session', {
         method: 'POST',
         headers: {
@@ -25,6 +24,7 @@ const StripeCheckout = ({ tier, onClose }) => {
           priceId: tier.priceId,
           tierName: tier.title,
           price: tier.price,
+          quantity: quantity,
         }),
       });
 
@@ -50,6 +50,14 @@ const StripeCheckout = ({ tier, onClose }) => {
     }
   };
 
+  const handleQuantityChange = (newQuantity) => {
+    if (newQuantity >= 1 && newQuantity <= 10) {
+      onQuantityChange(newQuantity);
+    }
+  };
+
+  const totalPrice = (parseFloat(tier.price.replace('$', '')) * quantity).toFixed(2);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -68,7 +76,7 @@ const StripeCheckout = ({ tier, onClose }) => {
         <h3 className="text-2xl font-heading text-yellow-300 mb-4">
           Purchase {tier.title}
         </h3>
-        
+
         <div className="mb-6">
           <p className="text-3xl font-bold text-red-500 mb-4">{tier.price}</p>
           <ul className="space-y-2 text-white">
@@ -87,6 +95,34 @@ const StripeCheckout = ({ tier, onClose }) => {
           </div>
         )}
 
+        <div className="flex items-center justify-between mb-4">
+          <span className="text-lg text-gray-300">Quantity:</span>
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => handleQuantityChange(quantity - 1)}
+              disabled={quantity <= 1}
+              className="bg-red-600 hover:bg-red-700 disabled:bg-gray-600 text-white w-8 h-8 rounded flex items-center justify-center font-bold"
+            >
+              -
+            </button>
+            <span className="text-xl font-bold text-white w-12 text-center">{quantity}</span>
+            <button
+              onClick={() => handleQuantityChange(quantity + 1)}
+              disabled={quantity >= 10}
+              className="bg-red-600 hover:bg-red-700 disabled:bg-gray-600 text-white w-8 h-8 rounded flex items-center justify-center font-bold"
+            >
+              +
+            </button>
+          </div>
+        </div>
+
+        <div className="border-t border-gray-600 pt-4">
+          <div className="flex items-center justify-between">
+            <span className="text-xl font-bold text-white">Total:</span>
+            <span className="text-2xl font-bold text-yellow-400">${totalPrice}</span>
+          </div>
+        </div>
+
         <div className="flex gap-4">
           <button
             onClick={handleCheckout}
@@ -95,7 +131,7 @@ const StripeCheckout = ({ tier, onClose }) => {
           >
             {loading ? 'Processing...' : 'Complete Purchase'}
           </button>
-          
+
           <button
             onClick={onClose}
             className="px-4 py-3 border-2 border-gray-400 text-gray-400 hover:text-white hover:border-white transition"

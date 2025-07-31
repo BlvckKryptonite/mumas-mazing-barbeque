@@ -9,7 +9,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { priceId, tierName, price } = req.body;
+    const { priceId, tierName, price, quantity = 1 } = req.body;
 
     // Convert price string to cents (remove $ and convert to number)
     const priceInCents = Math.round(parseFloat(price.replace('$', '')) * 100);
@@ -23,11 +23,11 @@ export default async function handler(req, res) {
             product_data: {
               name: `${tierName} - Muma's Mazing BBQ Event`,
               description: 'BBQ Event Ticket - Saturday, August 9, 1:00PM CDT',
-              images: [`${process.env.VITE_APP_URL || 'https://your-domain.com'}/attached_assets/muma-logo.png`],
+              images: [`${process.env.VITE_APP_URL || 'https://mumas-mazing-barbeque.replit.app'}/muma-logo.png`],
             },
             unit_amount: priceInCents,
           },
-          quantity: 1,
+          quantity: quantity,
         },
       ],
       mode: 'payment',
