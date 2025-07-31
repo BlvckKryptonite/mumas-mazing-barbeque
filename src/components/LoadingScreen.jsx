@@ -15,15 +15,28 @@ const LoadingScreen = ({ onComplete }) => {
     >
       <div className="text-center">
         <motion.div
-          className="w-32 h-32 mb-6 flex items-center justify-center mx-auto"
-          initial={{ scale: 0, rotate: -180 }}
-          animate={{ scale: 1, rotate: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="w-40 h-40 mb-6 flex items-center justify-center mx-auto"
+          initial={{ scale: 0, rotate: -45 }}
+          animate={{ 
+            scale: [0, 1.2, 1],
+            rotate: [0, 10, 0]
+          }}
+          transition={{ 
+            duration: 1.2, 
+            ease: "easeOut",
+            times: [0, 0.6, 1]
+          }}
         >
-          <img
-            src="/attached_assets/muma-logo.png"
-            alt="Muma's M Logo"
-            className="w-full h-full object-contain filter drop-shadow-lg"
+          <motion.img
+            src="/attached_assets/loading-logo.png"
+            alt="Muma's Loading Logo"
+            className="w-full h-full object-contain filter drop-shadow-2xl"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+            style={{
+              filter: "drop-shadow(0 0 20px rgba(255, 77, 77, 0.8)) drop-shadow(0 0 40px rgba(255, 77, 77, 0.4))"
+            }}
           />
         </motion.div>
         <motion.h1
