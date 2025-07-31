@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HeroBanner from "./components/HeroBanner";
 import Invitation from "./components/Invitation";
@@ -27,16 +28,16 @@ const Home = () => {
 
       <FireTransition />
 
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      viewport={{ once: true }}
-    >
-      <Invitation />
-    </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true }}
+      >
+        <Invitation />
+      </motion.div>
 
-    <FireTransition />
+      <FireTransition />
 
       <motion.div
         initial={{ opacity: 0, y: 40 }}
