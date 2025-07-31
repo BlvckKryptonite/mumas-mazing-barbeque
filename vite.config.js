@@ -11,6 +11,8 @@ export default defineConfig({
       '127.0.0.1',
       '.repl.co',       // allow any *.repl.co
       '.replit.dev',    // allow any *.replit.dev
+      '.replit.app',    // allow any *.replit.app
+      'mumas-mazing-barbeque.replit.app', // specific domain
     ],
   },
   build: {
