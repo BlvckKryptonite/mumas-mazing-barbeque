@@ -95,21 +95,8 @@ const Tickets = () => {
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-black border-2 border-yellow-400 p-6 relative overflow-hidden group"
+                className="bg-black border-2 border-yellow-400 p-6 rounded-lg shadow-lg glow-on-scroll hover:glow-on-hover transition-all duration-300"
               >
-                {/* Animated BBQ glow effects */}
-                <div className="absolute inset-0 opacity-60">
-                  <div className="absolute top-2 left-2 w-8 h-8 bg-red-500 rounded-full blur-md animate-pulse"></div>
-                  <div className="absolute top-4 right-4 w-6 h-6 bg-orange-400 rounded-full blur-sm animate-ping" style={{animationDelay: '0.5s'}}></div>
-                  <div className="absolute bottom-6 left-6 w-4 h-4 bg-yellow-300 rounded-full blur-sm animate-pulse" style={{animationDelay: '1s'}}></div>
-                  <div className="absolute bottom-4 right-8 w-5 h-5 bg-red-400 rounded-full blur-md animate-ping" style={{animationDelay: '1.5s'}}></div>
-                </div>
-
-                {/* Fire glow background */}
-                <div className="absolute inset-0 bg-gradient-to-br from-red-600/30 via-orange-500/25 to-yellow-400/30 opacity-40 group-hover:opacity-60 transition-opacity duration-500"></div>
-
-                {/* Smoke/heat effect */}
-                <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-16 h-8 bg-gradient-to-t from-transparent to-gray-400/20 rounded-full blur-md animate-pulse"></div>
 
                 <div className="relative z-10">
                   <h3 className="text-2xl font-heading text-yellow-400 mb-4 group-hover:text-yellow-300 transition-colors">
@@ -130,7 +117,7 @@ const Tickets = () => {
                     onClick={() => handleBuyNow(tier)}
                     className="w-full bg-red-600 hover:bg-red-700 text-white py-3 px-6 font-heading border-2 border-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-red-500/50"
                   >
-                    BUY NOW 🔥
+                    BUY NOW
                   </button>
                 </div>
               </motion.div>
