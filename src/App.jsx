@@ -8,6 +8,7 @@ import Gallery from "./components/Gallery";
 import FAQ from "./components/FAQ";
 import Tickets from "./pages/Tickets";
 import Success from "./pages/Success";
+import Contact from "./pages/Contact";
 import LoadingScreen from "./components/LoadingScreen";
 import FireTransition from "./components/animations/FireTransition";
 import { motion, AnimatePresence } from "framer-motion";
@@ -75,11 +76,19 @@ const Home = () => {
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/tickets" element={<Tickets />} />
-        <Route path="/success" element={<Success />} />
-      </Routes>
+      <div className="App">
+        {/* Demo Mode Badge */}
+        <div className="fixed top-4 right-4 z-50 bg-yellow-500 text-black px-3 py-1 rounded-full text-sm font-bold shadow-lg">
+          🚀 DEMO MODE
+        </div>
+
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/tickets" element={<Tickets />} />
+          <Route path="/success" element={<Success />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </div>
     </Router>
   );
 }

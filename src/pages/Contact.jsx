@@ -1,0 +1,118 @@
+
+import React from 'react';
+import { motion } from 'framer-motion';
+import { FaEnvelope, FaFire } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+
+const Contact = () => {
+  const handleEmailClick = () => {
+    const subject = encodeURIComponent("Muma's 'Mazing BBQ — Booking/Inquiry");
+    const body = encodeURIComponent("Hi Muma, I saw your demo and I'd like to…");
+    window.location.href = `mailto:mumathedeveloper@gmail.com?subject=${subject}&body=${body}`;
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="min-h-screen bg-black text-white p-6"
+    >
+      <div className="max-w-4xl mx-auto">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="text-center mb-12"
+        >
+          <Link to="/" className="inline-block mb-8">
+            <motion.img
+              whileHover={{ scale: 1.05 }}
+              src="/muma-logo.png"
+              alt="Muma's Logo"
+              className="h-16 mx-auto"
+            />
+          </Link>
+          <h1 className="text-5xl font-heading text-yellow-400 mb-4">
+            Ready to Get Sizzling? 🔥
+          </h1>
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+            Thanks for checking out the demo! Let's turn up the heat and make your BBQ dreams a reality.
+          </p>
+        </motion.div>
+
+        {/* Main Content */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.4 }}
+          className="bg-gray-900 border-2 border-yellow-400 rounded-lg p-8 text-center"
+        >
+          <FaFire className="text-6xl text-red-500 mx-auto mb-6" />
+          
+          <h2 className="text-3xl font-heading text-yellow-300 mb-6">
+            Let's Make It Happen!
+          </h2>
+          
+          <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
+            Whether you're planning a backyard gathering, corporate event, or just want to experience 
+            Muma's legendary BBQ skills, I'm here to make it 'mazing! Drop me a line and let's 
+            discuss how we can spice up your next event.
+          </p>
+
+          <div className="space-y-4 mb-8">
+            <div className="text-left max-w-md mx-auto space-y-2">
+              <p className="flex items-center text-gray-300">
+                <span className="text-yellow-400 mr-2">🍖</span>
+                Custom BBQ catering packages
+              </p>
+              <p className="flex items-center text-gray-300">
+                <span className="text-yellow-400 mr-2">🔥</span>
+                Live cooking demonstrations
+              </p>
+              <p className="flex items-center text-gray-300">
+                <span className="text-yellow-400 mr-2">👨‍🍳</span>
+                Private chef experiences
+              </p>
+              <p className="flex items-center text-gray-300">
+                <span className="text-yellow-400 mr-2">🎉</span>
+                Event planning consultation
+              </p>
+            </div>
+          </div>
+
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={handleEmailClick}
+            className="bg-red-600 hover:bg-red-700 text-white font-heading text-xl px-12 py-4 border-2 border-white rounded-lg shadow-lg uppercase tracking-wide flex items-center mx-auto gap-3"
+          >
+            <FaEnvelope />
+            Message Me
+          </motion.button>
+
+          <p className="text-sm text-gray-400 mt-4">
+            I typically respond within 24 hours!
+          </p>
+        </motion.div>
+
+        {/* Navigation */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6 }}
+          className="text-center mt-8"
+        >
+          <Link
+            to="/"
+            className="text-yellow-400 hover:text-yellow-300 underline font-heading"
+          >
+            ← Back to Home
+          </Link>
+        </motion.div>
+      </div>
+    </motion.div>
+  );
+};
+
+export default Contact;

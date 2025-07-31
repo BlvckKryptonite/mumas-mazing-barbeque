@@ -1,17 +1,37 @@
 import React, { useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
+
+// Demo mode configuration
+const DEMO_MODE = true;
 
 const StripeCheckout = ({ tier, onClose, quantity = 1, onQuantityChange }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [showDemoMessage, setShowDemoMessage] = useState(false);
+  const navigate = useNavigate();
 
   const handleCheckout = async () => {
     setLoading(true);
     setError(null);
 
+    if (DEMO_MODE) {
+      // Demo mode: show message and redirect to contact
+      setShowDemoMessage(true);
+      
+      setTimeout(() => {
+        onClose();
+        navigate('/contact');
+      }, 3000);
+      
+      setLoading(false);
+      return;
+    }
+
+    // Original Stripe flow (when DEMO_MODE is false)
     try {
       const stripe = await stripePromise;
 
@@ -95,6 +115,19 @@ const StripeCheckout = ({ tier, onClose, quantity = 1, onQuantityChange }) => {
           </div>
         )}
 
+        {showDemoMessage && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-4 p-4 bg-yellow-600 text-black rounded-lg border-2 border-yellow-400"
+          >
+            <p className="font-bold text-center">
+              🔥 This is a demo site! If you'd like to book Muma's 'Maziness, contact me and I'll get you sizzling with the real thing👇
+            </p>
+            <p className="text-sm text-center mt-2">Redirecting to contact page...</p>
+          </motion.div>
+        )}
+
         <div className="flex items-center justify-between mb-4">
           <span className="text-lg text-gray-300">Quantity:</span>
           <div className="flex items-center gap-3">
@@ -129,7 +162,7 @@ const StripeCheckout = ({ tier, onClose, quantity = 1, onQuantityChange }) => {
             disabled={loading}
             className="flex-1 bg-red-600 hover:bg-red-700 disabled:bg-gray-600 text-white py-3 px-6 font-heading border-2 border-white transition"
           >
-            {loading ? 'Processing...' : 'Complete Purchase'}
+            {loading ? (DEMO_MODE ? 'Redirecting...' : 'Processing...') : 'Complete Purchase'}
           </button>
 
           <button
