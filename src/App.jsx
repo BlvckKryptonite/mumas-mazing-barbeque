@@ -7,6 +7,7 @@ import EventDetails from "./components/EventDetails";
 import Gallery from "./components/Gallery";
 import FAQ from "./components/FAQ";
 import Tickets from "./pages/Tickets";
+import Success from "./pages/Success";
 import LoadingScreen from "./components/LoadingScreen";
 import FireTransition from "./components/animations/FireTransition";
 import { motion, AnimatePresence } from "framer-motion";
@@ -69,6 +70,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/tickets" element={<Tickets />} />
+        <Route path="/success" element={<Success />} />
       </Routes>
     </Router>
   );

@@ -10,6 +10,7 @@ const pricingTiers = [
   {
     title: "GENERAL ADMISSION",
     price: "$25",
+    priceId: "price_general_admission", // Replace with actual Stripe Price ID
     features: [
       "Entry to the BBQ Arena",
       "Access to all mouth watering delights",
@@ -20,21 +21,23 @@ const pricingTiers = [
   {
     title: "VIP PASS",
     price: "$50",
+    priceId: "price_vip_pass", // Replace with actual Stripe Price ID
     features: [
       "Everything in General Admission",
       "Priority seating",
-      "Muma’s legendary wing platter",
+      "Muma's legendary wing platter",
     ],
   },
   {
     title: "ULTIMATE BBQ EXPERIENCE",
     price: "$75",
+    priceId: "price_ultimate_experience", // Replace with actual Stripe Price ID
     features: [
       "All VIP Pass perks",
       "Backstage grill tour",
       "Access to BBQverse buffet",
       "Limited-edition BBQverse apron",
-      
+
     ],
   },
 ];
