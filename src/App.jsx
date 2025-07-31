@@ -85,8 +85,11 @@ const Home = () => {
 };
 
 function App() {
+  // Use basename only in development, not in production
+  const basename = import.meta.env.DEV ? "/mumas-mazing-barbeque" : "";
+  
   return (
-    <Router basename="/mumas-mazing-barbeque">
+    <Router basename={basename}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/tickets" element={<Tickets />} />
