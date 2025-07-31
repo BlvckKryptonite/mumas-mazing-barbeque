@@ -38,7 +38,7 @@ const LoadingScreen = ({ onComplete }) => {
           }}
         >
           <motion.img
-            src="/attached_assets/muma-logo.png"
+            src="/muma-logo.png"
             alt="Muma's Loading Logo"
             className="w-full h-full object-contain filter drop-shadow-2xl"
             initial={{ opacity: 0 }}
