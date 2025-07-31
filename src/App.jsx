@@ -7,22 +7,15 @@ import EventDetails from "./components/EventDetails";
 import Gallery from "./components/Gallery";
 import FAQ from "./components/FAQ";
 import Tickets from "./pages/Tickets";
-import LoadingScreen from "./components/LoadingScreen";
 import SoundToggle from "./components/SoundToggle";
 import FireTransition from "./components/animations/FireTransition";
 import { motion } from "framer-motion";
 
 const Home = () => {
-  const [isLoading, setIsLoading] = useState(true);
-
-  if (isLoading) {
-    return <LoadingScreen onLoadingComplete={() => setIsLoading(false)} />;
-  }
-
   return (
     <main className="bg-black text-white font-body overflow-x-hidden w-full max-w-full">
       <SoundToggle />
-      
+
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
