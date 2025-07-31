@@ -70,7 +70,7 @@ Responsive design was achieved using **Tailwind CSS** with custom breakpoints, f
 
 Below is the initial wireframe sketch and a refined digital wireframe for the Muma’s ‘Mazing BBQ landing page. These mockups were created to outline the structure, flow, and content hierarchy of the site in a fun and intuitive way.
 
-### 📝 Hand-drawn draft structure
+### 📝 Hand-written draft structure
 
 ![Wireframe Sketch](src/assets/images/wireframe-original-mmb.jpg)
 
