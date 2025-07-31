@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HeroBanner from "./components/HeroBanner";
 import Invitation from "./components/Invitation";
@@ -7,94 +7,79 @@ import EventDetails from "./components/EventDetails";
 import Gallery from "./components/Gallery";
 import FAQ from "./components/FAQ";
 import Tickets from "./pages/Tickets";
-import LoadingScreen from "./components/LoadingScreen";
-import FireTransition from "./components/animations/FireTransition";
 import { motion } from "framer-motion";
 
-const Home = () => {
-  return (
-    <main className="bg-black text-white font-body overflow-x-hidden w-full max-w-full">
+const Home = () => (
+  <main className="bg-black text-white font-body overflow-x-hidden w-full max-w-full">
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      viewport={{ once: true }}
+    >
+      <HeroBanner />
+    </motion.div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        viewport={{ once: true }}
-      >
-        <HeroBanner />
-      </motion.div>
+    <div className="w-full h-4 bg-gradient-to-r from-red-500 to-yellow-400" />
 
-      <FireTransition />
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      viewport={{ once: true }}
+    >
+      <Invitation />
+    </motion.div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        viewport={{ once: true }}
-      >
-        <Invitation />
-      </motion.div>
+    <div className="w-full h-4 bg-gradient-to-r from-yellow-400 to-orange-500" />
 
-      <FireTransition />
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      viewport={{ once: true }}
+    >
+      <Chefs />
+    </motion.div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        viewport={{ once: true }}
-      >
-        <Chefs />
-      </motion.div>
+    <div className="w-full h-4 bg-gradient-to-r from-orange-500 to-pink-500" />
 
-      <FireTransition />
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      viewport={{ once: true }}
+    >
+      <EventDetails />
+    </motion.div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        viewport={{ once: true }}
-      >
-        <EventDetails />
-      </motion.div>
+    <div className="w-full h-4 bg-gradient-to-r from-pink-500 to-purple-600" />
 
-      <FireTransition />
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      viewport={{ once: true }}
+    >
+      <Gallery />
+    </motion.div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        viewport={{ once: true }}
-      >
-        <Gallery />
-      </motion.div>
+    <div className="w-full h-4 bg-gradient-to-r from-purple-600 to-red-500" />
 
-      <FireTransition />
-
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        viewport={{ once: true }}
-      >
-        <FAQ />
-      </motion.div>
-    </main>
-  );
-};
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      viewport={{ once: true }}
+    >
+      <FAQ />
+    </motion.div>
+  </main>
+);
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
-
-  const handleLoadingComplete = () => {
-    setIsLoading(false);
-  };
-
-  if (isLoading) {
-    return <LoadingScreen onComplete={handleLoadingComplete} />;
-  }
-
   return (
-    <Router>
+    <Router basename="/mumas-mazing-barbeque">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/tickets" element={<Tickets />} />

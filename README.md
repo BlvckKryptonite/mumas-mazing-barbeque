@@ -179,7 +179,7 @@ Open `http://localhost:5003/` or whichever port Vite assigns.
    ### Other fixes:
    - Tailwind not applying due to incorrect content paths → Fixed
    - JSX structure breaking Framer Motion → Fixed with proper <motion> wrapping
-
+ 
 
 
 ---
@@ -195,21 +195,11 @@ Open `http://localhost:5003/` or whichever port Vite assigns.
 
 ## Future Enhancements
 
-- Loading animation (comic style "Page Flip" or flaming grill spinner)
+- Loading animation (comic style “Page Flip” or flaming grill spinner)
 - Section transitions with fire or smoke effects
 - Stripe-powered RSVP or ticket sales form
 - Fully animated parallax scroll effects
 - Add sound FX toggle (comic zap, sizzle, etc.)
-
----
-
-## Recent Updates (July 2025)
-
-- ✅ **Stripe Integration Complete** - Full payment processing with secure checkout
-- ✅ **Parallax Effects Implemented** - Enhanced visual scrolling experience
-- ✅ **Sound Effects Added** - Toggle-able comic sound effects
-- ✅ **Loading Animations** - Comic-style page transitions
-- ✅ **Enhanced User Experience** - Responsive design with modern animations
 
 ---
 
