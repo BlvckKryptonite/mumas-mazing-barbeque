@@ -13,13 +13,21 @@ import FireTransition from "./components/animations/FireTransition";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Home = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(() => {
+    // Only show loading on initial visit, not when navigating back
+    return !sessionStorage.getItem('hasSeenLoading');
+  });
+
+  const handleLoadingComplete = () => {
+    setIsLoading(false);
+    sessionStorage.setItem('hasSeenLoading', 'true');
+  };
 
   return (
     <>
       <AnimatePresence>
         {isLoading && (
-          <LoadingScreen onComplete={() => setIsLoading(false)} />
+          <LoadingScreen onComplete={handleLoadingComplete} />
         )}
       </AnimatePresence>
 
@@ -65,15 +73,6 @@ const Home = () => {
 };
 
 function App() {
-  const [showLoading, setShowLoading] = useState(() => {
-    // Skip loading if user has already seen it in this session
-    return !sessionStorage.getItem('hasSeenLoading');
-  });
-
-  const handleLoadingComplete = () => {
-    setShowLoading(false);
-    sessionStorage.setItem('hasSeenLoading', 'true');
-  };
   return (
     <Router>
       <Routes>
