@@ -1,9 +1,10 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { FaArrowLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import SplitWords from "../components/animations/SplitWords";
 import FAQ from "../components/FAQ";
+import StripeCheckout from "../components/StripeCheckout";
 import chefsBg from '../assets/images/chefs-background.png';
 
 const pricingTiers = [
@@ -40,7 +41,19 @@ const pricingTiers = [
 ];
 
 const Tickets = () => {
+  const [selectedTicket, setSelectedTicket] = useState(null);
+
   return (
+    <>
+      <AnimatePresence>
+        {selectedTicket && (
+          <StripeCheckout 
+            ticketType={selectedTicket.title}
+            price={selectedTicket.price}
+            onClose={() => setSelectedTicket(null)}
+          />
+        )}
+      </AnimatePresence>
     <motion.section
       style={{ backgroundImage: `url(${chefsBg})` }}
       className="min-h-screen bg-cover bg-center bg-no-repeat text-white py-24 px-6 font-body relative overflow-hidden"
@@ -92,7 +105,10 @@ const Tickets = () => {
                   <li key={i}>✔️ {feature}</li>
                 ))}
               </ul>
-              <button className="mt-6 w-full bg-red-600 hover:bg-red-700 text-white py-2 px-4 font-heading border-2 border-white transition hover:scale-105">
+              <button 
+                onClick={() => setSelectedTicket(tier)}
+                className="mt-6 w-full bg-red-600 hover:bg-red-700 text-white py-2 px-4 font-heading border-2 border-white transition hover:scale-105"
+              >
                 Get This Ticket
               </button>
             </motion.div>
@@ -108,6 +124,7 @@ const Tickets = () => {
         </motion.button>
       </div>
     </motion.section>
+    </>
   );
 };
 
