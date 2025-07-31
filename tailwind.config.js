@@ -1,26 +1,35 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./index.html", "./src/**/*.{js,jsx}"],
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
   theme: {
     extend: {
       fontFamily: {
-        heading: ['"Bangers"', 'cursive'],
-        body: ['"Poppins"', 'sans-serif'],
+        'heading': ['Bangers', 'cursive'],
+        'body': ['Poppins', 'sans-serif'],
+      },
+      animation: {
+        'flame': 'flame 2s ease-in-out infinite alternate',
+        'bounce-slow': 'bounce 3s infinite',
       },
       keyframes: {
         flame: {
-          "0%, 100%": {
-            boxShadow: "0 0 25px 5px rgba(255,115,0,0.5)",
+          '0%': { 
+            transform: 'scale(1) rotate(-1deg)',
+            filter: 'hue-rotate(0deg)'
           },
-          "50%": {
-            boxShadow: "0 0 35px 10px rgba(255,85,0,0.8)",
-          },
-        },
+          '100%': { 
+            transform: 'scale(1.05) rotate(1deg)',
+            filter: 'hue-rotate(30deg)'
+          }
+        }
       },
-      animation: {
-        flame: "flame 2s ease-in-out infinite",
-      },
+      screens: {
+        'xs': '475px',
+      }
     },
   },
   plugins: [],
-};
+}
