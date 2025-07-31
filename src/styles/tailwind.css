@@ -45,26 +45,27 @@ body, #root {
   }
 }
 
-/* Optimized BBQ Flame Glow Animation for better performance */
+/* Ultra-optimized BBQ Flame Glow Animation */
 @keyframes bbqFlameGlow {
   0%, 100% {
-    box-shadow: 0 0 15px rgba(255, 77, 0, 0.4);
+    box-shadow: 0 0 8px rgba(255, 77, 0, 0.3);
   }
   50% {
-    box-shadow: 0 0 25px rgba(255, 140, 0, 0.6);
+    box-shadow: 0 0 12px rgba(255, 140, 0, 0.4);
   }
 }
 
-/* Tailwind-compatible utilities */
+/* Tailwind-compatible utilities with reduced complexity */
 .glow-on-scroll {
-  animation: glowPulse 2s ease-in-out infinite;
+  animation: glowPulse 3s ease-in-out infinite;
 }
 
 .hover\\:glow-on-hover:hover {
-  animation: glowPulse 2s ease-in-out infinite;
+  animation: glowPulse 3s ease-in-out infinite;
 }
 
 .bbq-flame-glow {
-  animation: bbqFlameGlow 2s ease-in-out infinite;
+  animation: bbqFlameGlow 3s ease-in-out infinite;
   will-change: box-shadow;
+  transform: translateZ(0); /* Force hardware acceleration */
 }
