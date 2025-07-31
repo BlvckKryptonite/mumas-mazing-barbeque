@@ -16,6 +16,9 @@ const HeroBanner = () => {
       className="relative w-full min-h-[80vh] md:h-screen bg-cover bg-no-repeat bg-center flex items-center px-4 sm:px-6 md:px-20 overflow-hidden"
       style={{
         backgroundImage: `url(${heroBanner})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        willChange: 'transform'
       }}
     >
       {/* Mobile background override */}

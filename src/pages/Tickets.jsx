@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { FaArrowLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import SplitWords from "../components/animations/SplitWords";
 import FAQ from "../components/FAQ";
+import StripeCheckout from "../components/StripeCheckout";
 import chefsBg from '../assets/images/chefs-background.png';
 
 const pricingTiers = [
@@ -43,6 +44,19 @@ const pricingTiers = [
 ];
 
 const Tickets = () => {
+  const [selectedTier, setSelectedTier] = useState(null);
+  const [showCheckout, setShowCheckout] = useState(false);
+
+  const handleTicketSelect = (tier) => {
+    setSelectedTier(tier);
+    setShowCheckout(true);
+  };
+
+  const closeCheckout = () => {
+    setShowCheckout(false);
+    setSelectedTier(null);
+  };
+
   return (
     <motion.section
       style={{ backgroundImage: `url(${chefsBg})` }}
@@ -94,7 +108,10 @@ const Tickets = () => {
                   <li key={i}>✔️ {feature}</li>
                 ))}
               </ul>
-              <button className="mt-6 w-full bg-red-600 hover:bg-red-700 text-white py-2 px-4 font-heading border-2 border-white transition hover:scale-105">
+              <button 
+                onClick={() => handleTicketSelect(tier)}
+                className="mt-6 w-full bg-red-600 hover:bg-red-700 text-white py-2 px-4 font-heading border-2 border-white transition hover:scale-105"
+              >
                 Get This Ticket
               </button>
             </motion.div>
@@ -103,12 +120,21 @@ const Tickets = () => {
 
         {/* CTA */}
         <motion.button
+          onClick={() => handleTicketSelect(pricingTiers[0])}
           whileHover={{ scale: 1.08 }}
           className="text-white text-xl font-heading bg-red-600 hover:bg-red-700 px-10 py-4 border-2 border-white shadow-lg uppercase tracking-wide"
         >
           Purchase Now
         </motion.button>
       </div>
+
+      {/* Stripe Checkout Modal */}
+      {showCheckout && selectedTier && (
+        <StripeCheckout 
+          tier={selectedTier} 
+          onClose={closeCheckout} 
+        />
+      )}
     </motion.section>
   );
 };
