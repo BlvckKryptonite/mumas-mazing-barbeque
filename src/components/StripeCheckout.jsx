@@ -1,9 +1,14 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { loadStripe } from '@stripe/stripe-js';
+
+// Initialize Stripe
+const stripePromise = loadStripe(process.env.STRIPE_PUBLISHABLE_KEY);
 
 const StripeCheckout = ({ ticketType, price, onClose }) => {
   const [isProcessing, setIsProcessing] = useState(false);
+  const [stripe, setStripe] = useState(null);
   const [formData, setFormData] = useState({
     email: '',
     name: '',
@@ -11,20 +16,79 @@ const StripeCheckout = ({ ticketType, price, onClose }) => {
     quantity: 1
   });
 
+  useEffect(() => {
+    const initializeStripe = async () => {
+      const stripeInstance = await stripePromise;
+      setStripe(stripeInstance);
+    };
+    initializeStripe();
+  }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    if (!stripe) {
+      alert('Stripe has not loaded yet. Please try again.');
+      return;
+    }
+
     setIsProcessing(true);
     
-    // Mock Stripe integration - in production, you'd implement actual Stripe
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      const totalAmount = parseInt(price.replace('$', '')) * formData.quantity;
       
-      // Success simulation
-      alert(`🎉 Success! Your ${ticketType} ticket(s) have been reserved! Check your email for confirmation.`);
-      onClose();
+      // Create payment intent on your backend (you'll need to implement this endpoint)
+      const response = await fetch('/api/create-payment-intent', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          amount: totalAmount * 100, // Stripe expects cents
+          currency: 'usd',
+          ticketType,
+          quantity: formData.quantity,
+          customerInfo: {
+            email: formData.email,
+            name: formData.name,
+            phone: formData.phone
+          }
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to create payment intent');
+      }
+
+      const { clientSecret } = await response.json();
+
+      // Confirm payment with Stripe
+      const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
+        payment_method: {
+          card: {
+            // For demo purposes, we'll use a test card
+            // In production, you'd use Stripe Elements for card input
+          },
+          billing_details: {
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+          },
+        },
+      });
+
+      if (error) {
+        throw error;
+      }
+
+      if (paymentIntent.status === 'succeeded') {
+        alert(`🎉 Success! Your ${ticketType} ticket(s) have been reserved! Check your email for confirmation.`);
+        onClose();
+      }
+      
     } catch (error) {
-      alert('❌ Payment failed. Please try again.');
+      console.error('Payment failed:', error);
+      alert(`❌ Payment failed: ${error.message || 'Please try again.'}`);
     } finally {
       setIsProcessing(false);
     }
@@ -35,6 +99,25 @@ const StripeCheckout = ({ ticketType, price, onClose }) => {
       ...formData,
       [e.target.name]: e.target.value
     });
+  };
+
+  // For demo purposes, we'll show a simplified form
+  // In production, you'd integrate Stripe Elements for secure card input
+  const handleDemoPayment = async () => {
+    setIsProcessing(true);
+    
+    try {
+      // Simulate successful payment for demo
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      alert(`🎉 Demo Payment Success! Your ${ticketType} ticket(s) have been reserved! 
+      
+Note: This is a demo. In production, real payment processing would occur here.`);
+      onClose();
+    } catch (error) {
+      alert('❌ Demo payment failed. Please try again.');
+    } finally {
+      setIsProcessing(false);
+    }
   };
 
   return (
@@ -121,8 +204,10 @@ const StripeCheckout = ({ ticketType, price, onClose }) => {
             </select>
           </div>
 
+          {/* Demo Payment Button */}
           <motion.button
-            type="submit"
+            type="button"
+            onClick={handleDemoPayment}
             disabled={isProcessing}
             whileHover={!isProcessing ? { scale: 1.05 } : {}}
             className={`w-full py-4 font-heading text-lg border-2 border-white transition ${
@@ -137,10 +222,17 @@ const StripeCheckout = ({ ticketType, price, onClose }) => {
                 Processing...
               </div>
             ) : (
-              `Complete Purchase - $${parseInt(price.replace('$', '')) * formData.quantity}`
+              `Demo Purchase - $${parseInt(price.replace('$', '')) * formData.quantity}`
             )}
           </motion.button>
         </form>
+
+        <div className="mt-4 p-3 bg-yellow-900 border border-yellow-400 rounded">
+          <p className="text-yellow-200 text-sm">
+            🚧 <strong>Demo Mode:</strong> This is using demo payment processing. 
+            For production, integrate with your backend API and Stripe Elements for secure card processing.
+          </p>
+        </div>
 
         <p className="text-xs text-gray-400 mt-4 text-center">
           🔒 Secure payment powered by Stripe
