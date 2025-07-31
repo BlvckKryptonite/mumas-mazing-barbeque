@@ -7,10 +7,10 @@ channel = "stable-25_05"
 [deployment]
 deploymentTarget = "cloudrun"
 build = ["sh", "-c", "npm run build"]
-run = ["sh", "-c", "npm run preview"]
+run = ["sh", "-c", "npm run server"]
 
 [workflows]
-runButton = "Dev Server"
+runButton = "Dev with API"
 
 [[workflows.workflow]]
 name = "Dev Server"
@@ -20,6 +20,19 @@ mode = "sequential"
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "npm run dev"
+
+[[workflows.workflow]]
+name = "Dev with API"
+author = 44568494
+mode = "parallel"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npm run dev"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node server.js"
 
 [[ports]]
 localPort = 3000
