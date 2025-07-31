@@ -22,7 +22,7 @@ const LoadingScreen = ({ onComplete }) => {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <img 
-            src="/attached_assets/mmb  (1)_1753992517315.png" 
+            src="/attached_assets/muma-logo.png" 
             alt="Muma's M Logo" 
             className="w-full h-full object-contain filter drop-shadow-lg"
           />
