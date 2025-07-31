@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HeroBanner from "./components/HeroBanner";
 import Invitation from "./components/Invitation";
@@ -8,14 +8,13 @@ import EventDetails from "./components/EventDetails";
 import Gallery from "./components/Gallery";
 import FAQ from "./components/FAQ";
 import Tickets from "./pages/Tickets";
-import SoundToggle from "./components/SoundToggle";
+import LoadingScreen from "./components/LoadingScreen";
 import FireTransition from "./components/animations/FireTransition";
 import { motion } from "framer-motion";
 
 const Home = () => {
   return (
     <main className="bg-black text-white font-body overflow-x-hidden w-full max-w-full">
-      <SoundToggle />
 
       <motion.div
         initial={{ opacity: 0, y: 40 }}
@@ -85,11 +84,18 @@ const Home = () => {
 };
 
 function App() {
-  // Use basename only in development, not in production
-  const basename = import.meta.env.DEV ? "/mumas-mazing-barbeque" : "";
-  
+  const [isLoading, setIsLoading] = useState(true);
+
+  const handleLoadingComplete = () => {
+    setIsLoading(false);
+  };
+
+  if (isLoading) {
+    return <LoadingScreen onComplete={handleLoadingComplete} />;
+  }
+
   return (
-    <Router basename={basename}>
+    <Router>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/tickets" element={<Tickets />} />
