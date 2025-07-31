@@ -1,6 +1,5 @@
-
-import React from 'react';
-import { motion } from 'framer-motion';
+import React from "react";
+import { motion } from "framer-motion";
 
 const LoadingScreen = ({ onComplete }) => {
   return (
@@ -21,9 +20,9 @@ const LoadingScreen = ({ onComplete }) => {
           animate={{ scale: 1, rotate: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <img 
-            src="/attached_assets/muma-logo.png" 
-            alt="Muma's M Logo" 
+          <img
+            src="attached_assets/muma-logo.png"
+            alt="Muma's M Logo"
             className="w-full h-full object-contain filter drop-shadow-lg"
           />
         </motion.div>
