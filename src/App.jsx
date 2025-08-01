@@ -77,10 +77,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        {/* Demo Mode Badge */}
-        <div className="fixed top-4 right-4 z-50 bg-yellow-500 text-black px-3 py-1 rounded-full text-sm font-bold shadow-lg">
-          🚀 DEMO MODE
-        </div>
+        
 
         <Routes>
           <Route path="/" element={<Home />} />

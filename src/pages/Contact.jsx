@@ -35,7 +35,7 @@ const Contact = () => {
             />
           </Link>
           <h1 className="text-5xl font-heading text-yellow-400 mb-4">
-            Ready to Cook Up Something Digital? 💻🔥
+            Ready to Cook? 🔥
           </h1>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
             Thanks for checking out this demo! While the BBQ here is virtual, my real specialty is grilling up sizzling dev solutions and mouth‑watering digital experiences.
