@@ -108,12 +108,9 @@ const Contact = () => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 5 }}
+          transition={{ delay: 0.6 }}
           className="text-center mt-8"
         >
-         <p className="text-sm text-gray-400 mt-4">
-            * “This is a demo site. If you’d like to book Muma’s ‘Maziness, contact me  and I’ll get you sizzling with the real thing👇”
-          </p>
           <Link
             to="/"
             className="text-yellow-400 hover:text-yellow-300 underline font-heading"
