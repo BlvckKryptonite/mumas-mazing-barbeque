@@ -3,7 +3,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FaEnvelope, FaHome } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import fireIcon from '../assets/images/fire-icon.png';
 
 const Contact = () => {
   const handleEmailClick = () => {
@@ -53,7 +52,7 @@ const Contact = () => {
           transition={{ delay: 0.4 }}
           className="bg-black border-4 border-yellow-400 rounded-lg p-8 text-center head-chef-glow hover:head-chef-glow-hover transition-all duration-300"
         >
-          <img src={fireIcon} alt="Fire Icon" className="w-16 h-16 mx-auto mb-6" />
+          <img src="/fire-icon.png" alt="Fire Icon" className="w-16 h-16 mx-auto mb-6" />
           
           <h2 className="text-3xl font-heading text-yellow-300 mb-6">
             Let's Make It Happen!
