@@ -57,15 +57,15 @@ const SplitWords = ({ text, children, className = "", speed = 1 }) => {
       {words.map((word, idx) => (
         <motion.span
           key={idx}
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ 
             duration: 0.4, 
-            delay: idx * 0.08,
+            delay: idx * 0.05,
             ease: "easeOut"
           }}
           className={`inline-block ${className}`}
-          style={{ willChange: 'transform, opacity', marginRight: idx < words.length - 1 ? '0.25rem' : '0' }}
+          style={{ marginRight: idx < words.length - 1 ? '0.25rem' : '0' }}
         >
           {word}
         </motion.span>

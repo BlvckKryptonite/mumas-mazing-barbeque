@@ -1,24 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 const LoadingScreen = ({ onComplete }) => {
   const [progress, setProgress] = useState(0);
-  const [isComplete, setIsComplete] = useState(false);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setProgress(prev => {
-        if (prev >= 100) {
-          setIsComplete(true);
-          setTimeout(() => onComplete(), 300);
-          clearInterval(timer);
-          return 100;
-        }
-        return prev + 4;
-      });
-    }, 30);
+    const timer = setTimeout(() => {
+      setProgress(100);
+      setTimeout(() => {
+        onComplete();
+      }, 800); // Extended delay for page render
+    }, 2500); // Extended to 2.5 seconds loading time
 
-    return () => clearInterval(timer);
+    return () => clearTimeout(timer);
   }, [onComplete]);
 
   return (

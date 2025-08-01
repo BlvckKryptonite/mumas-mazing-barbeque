@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Suspense, lazy } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HeroBanner from "./components/HeroBanner";
 import Invitation from "./components/Invitation";
@@ -6,13 +6,12 @@ import Chefs from "./components/Chefs";
 import EventDetails from "./components/EventDetails";
 import Gallery from "./components/Gallery";
 import FAQ from "./components/FAQ";
+import Tickets from "./pages/Tickets";
+import Success from "./pages/Success";
+import Contact from "./pages/Contact";
 import LoadingScreen from "./components/LoadingScreen";
 import FireTransition from "./components/animations/FireTransition";
 import { motion, AnimatePresence } from "framer-motion";
-
-const Tickets = lazy(() => import("./pages/Tickets"));
-const Success = lazy(() => import("./pages/Success"));
-const Contact = lazy(() => import("./pages/Contact"));
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(() => {
@@ -78,16 +77,14 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Suspense fallback={<div className="min-h-screen bg-black flex items-center justify-center">
-            <div className="text-yellow-400 text-xl">Loading...</div>
-          </div>}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/tickets" element={<Tickets />} />
-            <Route path="/success" element={<Success />} />
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
-        </Suspense>
+        
+
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/tickets" element={<Tickets />} />
+          <Route path="/success" element={<Success />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
       </div>
     </Router>
   );
