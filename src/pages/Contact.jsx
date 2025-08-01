@@ -1,8 +1,9 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaEnvelope, FaFire } from 'react-icons/fa';
+import { FaEnvelope } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import fireIcon from '../assets/images/fire-icon.png';
 
 const Contact = () => {
   const handleEmailClick = () => {
@@ -34,10 +35,10 @@ const Contact = () => {
             />
           </Link>
           <h1 className="text-5xl font-heading text-yellow-400 mb-4">
-            Ready to Get Sizzling? 🔥
+            Ready to Cook Up Something Digital? 💻🔥
           </h1>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Thanks for checking out the demo! Let's turn up the heat and make your BBQ dreams a reality.
+            Thanks for checking out this demo! While the BBQ here is virtual, my real specialty is grilling up sizzling dev solutions and mouth‑watering digital experiences.
           </p>
         </motion.div>
 
@@ -48,38 +49,36 @@ const Contact = () => {
           transition={{ delay: 0.4 }}
           className="bg-gray-900 border-2 border-yellow-400 rounded-lg p-8 text-center"
         >
-          <FaFire className="text-6xl text-red-500 mx-auto mb-6" />
+          <img src={fireIcon} alt="Fire Icon" className="w-16 h-16 mx-auto mb-6" />
           
           <h2 className="text-3xl font-heading text-yellow-300 mb-6">
-            Let's Make It Happen!
+            Let's Make It Happen:
           </h2>
           
-          <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
-            Whether you're planning a backyard gathering, corporate event, or just want to experience 
-            Muma's legendary BBQ skills, I'm here to make it 'mazing! Drop me a line and let's 
-            discuss how we can spice up your next event.
-          </p>
-
           <div className="space-y-4 mb-8">
-            <div className="text-left max-w-md mx-auto space-y-2">
-              <p className="flex items-center text-gray-300">
-                <span className="text-yellow-400 mr-2">🍖</span>
-                Custom BBQ catering packages
+            <div className="text-left max-w-2xl mx-auto space-y-3">
+              <p className="flex items-start text-gray-300">
+                <span className="text-yellow-400 mr-3 mt-1">🍖</span>
+                <span><strong>Custom Web App Development</strong> – From landing pages to full‑stack apps, cooked to perfection.</span>
               </p>
-              <p className="flex items-center text-gray-300">
-                <span className="text-yellow-400 mr-2">🔥</span>
-                Live cooking demonstrations
+              <p className="flex items-start text-gray-300">
+                <span className="text-yellow-400 mr-3 mt-1">🔥</span>
+                <span><strong>Interactive & Animated UIs</strong> – Parallax, comic‑style effects, and scroll‑triggered magic that pops.</span>
               </p>
-              <p className="flex items-center text-gray-300">
-                <span className="text-yellow-400 mr-2">👨‍🍳</span>
-                Private chef experiences
+              <p className="flex items-start text-gray-300">
+                <span className="text-yellow-400 mr-3 mt-1">🎨</span>
+                <span><strong>Creative Web Design</strong> – I turn ordinary concepts into 'Mazing digital experiences.</span>
               </p>
-              <p className="flex items-center text-gray-300">
-                <span className="text-yellow-400 mr-2">🎉</span>
-                Event planning consultation
+              <p className="flex items-start text-gray-300">
+                <span className="text-yellow-400 mr-3 mt-1">🚀</span>
+                <span><strong>Demo → Live Deployment</strong> – I can take your idea from sketch to production on Replit, GitHub Pages, or your platform of choice.</span>
               </p>
             </div>
           </div>
+
+          <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto font-semibold">
+            <strong>Drop me a line and let's spice up your next big project —</strong> no grill required. 😎
+          </p>
 
           <motion.button
             whileHover={{ scale: 1.05 }}
