@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaEnvelope } from 'react-icons/fa';
+import { FaEnvelope, FaHome } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import fireIcon from '../assets/images/fire_icon.png';
 
@@ -18,7 +18,19 @@ const Contact = () => {
       animate={{ opacity: 1, y: 0 }}
       className="min-h-screen bg-black text-white p-6"
     >
-      <div className="max-w-4xl mx-auto">
+      {/* Home Button */}
+      <div className="absolute top-6 left-6 z-50">
+        <Link to="/">
+          <motion.button
+            whileHover={{ scale: 1.1, rotate: -5 }}
+            className="bg-yellow-400 text-black p-3 rounded-full shadow-lg border-2 border-white"
+          >
+            <FaHome className="text-lg" />
+          </motion.button>
+        </Link>
+      </div>
+
+      <div className="max-w-4xl mx-auto"></div>
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
