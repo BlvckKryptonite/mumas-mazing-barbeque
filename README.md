@@ -285,15 +285,68 @@ The application now includes full Stripe payment processing for ticket sales:
 
 ---
 
+### Recent Updates & Improvements ✨
+
+**Latest Enhancements (2024):**
+- **Contact Page Implementation** ✅ – Added comprehensive contact form with service offerings and animated fire icon
+- **Asset Path Optimization** ✅ – Resolved image loading issues with proper public folder structure
+- **UI Polish & Icon Updates** ✅ – Enhanced bullet points with proper emoji icons (✨, 🔥, 🎨, 🚀)
+- **Animation Performance** ✅ – Improved motion.img implementations with proper object-contain styling
+- **Development Workflow** ✅ – Streamlined dev environment with parallel API server setup
+
+**Current Deployment Status:**
+- **Platform**: Replit (Full-stack deployment)
+- **Frontend**: Vite + React (Port 3002)
+- **Backend**: Express.js API server (Node.js)
+- **Payment Processing**: Stripe integration with secure checkout
+- **Asset Management**: Optimized public folder structure for static assets
+
+---
+
 ### Future Enhancements
 
 - Loading animation (comic style "Page Flip" or flaming grill spinner) ✅ **COMPLETED**
 - Section transitions with fire or smoke effects
 - Stripe-powered RSVP or ticket sales form ✅ **COMPLETED**
+- Contact page with service offerings ✅ **COMPLETED**
 - Fully animated parallax scroll effects
 - Add sound FX toggle (comic zap, sizzle, etc.)
 - Performance monitoring and optimization
 - Mobile-specific animation optimizations
+
+---
+
+## 🚀 Recent Deployment Challenges & Solutions
+
+### Asset Loading & Path Resolution
+
+**Challenge**: Fire icon and other assets not loading properly in production
+- **Root Cause**: Inconsistent naming conventions (fire_icon.png vs fire-icon.png) and improper import patterns
+- **Solution**: Standardized asset naming and moved critical assets to public folder for direct path access
+- **Implementation**: Used `/fire-icon.png` pattern matching the loading screen logo approach
+
+### Performance Optimization
+
+**Challenge**: Complex glow animations causing performance issues in development
+- **Root Cause**: Heavy CSS animations with multiple shadow effects
+- **Solution**: Optimized animation complexity and added `will-change` properties for better rendering
+- **Result**: Smoother scroll performance and reduced development lag
+
+### Multi-Environment Configuration
+
+**Challenge**: Coordinating frontend and backend development workflows
+- **Solution**: Implemented parallel workflow configuration:
+  - Frontend dev server on port 3002
+  - Backend API server running simultaneously
+  - Proper port forwarding for external access
+
+### Production Deployment Considerations
+
+**Why Replit Over Other Platforms:**
+- **Full-stack Support**: Unlike static hosting (GitHub Pages), Replit handles both frontend and backend
+- **Environment Security**: Secure handling of Stripe API keys and environment variables
+- **Integrated Development**: Seamless transition from development to production
+- **Port Management**: Built-in port forwarding and external access configuration
 
 ---
 
@@ -312,15 +365,21 @@ The application now includes full Stripe payment processing for ticket sales:
 
 This project deepened understanding of Vite + React workflows, Tailwind theming, animated UIs, and the importance of checking structural integrity during local setup.
 
+**Key Technical Insights:**
+- Asset path consistency is crucial for production deployment
+- Parallel development workflows improve full-stack productivity  
+- Animation performance optimization requires careful balance between visual impact and smooth execution
+- Environment-specific configuration prevents deployment surprises
+
 ---
 
 ## 🔗 Connect With Me
 
-Want to book Muma’s ‘Mazing Barbeque at your event or collaborate on something cool? Reach out!
+Want to book Muma's 'Mazing Barbeque at your event or collaborate on something cool? Reach out!
 
 - Email: [mumathedeveloper@gmail.com](mailto:yourname@example.com)
 - GitHub: [BlvckKryptonite](https://github.com/BlvckKryptonite)
 
 ---
 
-> **“Where the grill meets greatness — and the steak saves the day.”**
+> **"Where the grill meets greatness — and the steak saves the day."**
