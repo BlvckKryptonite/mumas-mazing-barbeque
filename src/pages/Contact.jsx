@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaEnvelope, FaHome } from 'react-icons/fa';
@@ -60,11 +59,11 @@ const Contact = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.6, duration: 0.6 }}
           />
-          
+
           <h2 className="text-3xl font-heading text-yellow-300 mb-6">
             Let's Make It Happen!
           </h2>
-          
+
           <div className="space-y-4 mb-8">
             <div className="text-left max-w-2xl mx-auto space-y-3">
               <p className="flex items-start text-gray-300">
@@ -81,7 +80,7 @@ const Contact = () => {
               </p>
               <p className="flex items-start text-gray-300">
                 <span className="text-yellow-400 mr-3 mt-1">🚀</span>
-                <span><strong>Demo → Live Deployment</strong> – I can take your idea from sketch to production on Replit, GitHub Pages, or your platform of choice.</span>
+                <span><strong>Demo → Live Deployment</strong> – I can take your idea from sketch to production on any platform of your choice.</span>
               </p>
             </div>
           </div>
@@ -109,9 +108,12 @@ const Contact = () => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.6 }}
+          transition={{ delay: 5 }}
           className="text-center mt-8"
         >
+         <p className="text-sm text-gray-400 mt-4">
+            * “This is a demo site. If you’d like to book Muma’s ‘Maziness, contact me  and I’ll get you sizzling with the real thing👇”
+          </p>
           <Link
             to="/"
             className="text-yellow-400 hover:text-yellow-300 underline font-heading"
