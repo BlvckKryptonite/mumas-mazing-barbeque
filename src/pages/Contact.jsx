@@ -3,7 +3,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FaEnvelope, FaHome } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import fireIcon from '../assets/images/fire_icon.png';
+import fireIcon from '../assets/images/fire-icon.png';
 
 const Contact = () => {
   const handleEmailClick = () => {
