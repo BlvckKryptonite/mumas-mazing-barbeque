@@ -72,7 +72,7 @@ const Contact = () => {
                 <span><strong>Custom Web App Development</strong> – From landing pages to full‑stack apps, cooked to perfection.</span>
               </p>
               <p className="flex items-start text-gray-300">
-                <span className="text-yellow-400 mr-3 mt-1">🔥</span>
+                <span className="text-yellow-400 mr-3 mt-1">✨</span>
                 <span><strong>Interactive & Animated UIs</strong> – Parallax, comic‑style effects, and scroll‑triggered magic that pops.</span>
               </p>
               <p className="flex items-start text-gray-300">
