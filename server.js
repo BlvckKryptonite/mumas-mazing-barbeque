@@ -1,27 +1,46 @@
 
 import express from 'express';
 import cors from 'cors';
-import Stripe from 'stripe';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import Stripe from 'stripe';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+const PORT = process.env.PORT || 5000;
 
-app.use(cors());
-app.use(express.json());
-app.use(express.static('dist'));
+// Initialize Stripe
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || 'sk_test_placeholder');
 
-// Create checkout session endpoint
+// Middleware
+app.use(cors({
+  origin: process.env.NODE_ENV === 'production' 
+    ? ['https://mumas-mazing-barbeque.replit.app']
+    : ['http://localhost:3000', 'http://localhost:3001', 'http://localhost:3002'],
+  credentials: true
+}));
+
+app.use(express.json({ limit: '10mb' }));
+app.use(express.static(path.join(__dirname, 'dist')));
+
+// Compression middleware for production
+if (process.env.NODE_ENV === 'production') {
+  const compression = await import('compression');
+  app.use(compression.default());
+}
+
+// API Routes
 app.post('/api/create-checkout-session', async (req, res) => {
   try {
-    const { priceId, tierName, price, quantity = 1 } = req.body;
-
-    // Convert price string to cents (remove $ and convert to number)
-    const priceInCents = Math.round(parseFloat(price.replace('$', '')) * 100);
+    const { ticketType, quantity } = req.body;
+    
+    const prices = {
+      'early-bird': 2500,
+      'general': 3500,
+      'vip': 7500
+    };
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
@@ -30,44 +49,33 @@ app.post('/api/create-checkout-session', async (req, res) => {
           price_data: {
             currency: 'usd',
             product_data: {
-              name: `${tierName} - Muma's Mazing BBQ Event`,
-              description: 'BBQ Event Ticket - Saturday, August 9, 1:00PM CDT',
-              images: [`${process.env.VITE_APP_URL || 'https://mumas-mazing-barbeque.replit.app'}/muma-logo.png`],
+              name: `${ticketType.charAt(0).toUpperCase() + ticketType.slice(1)} Ticket - Muma's 'Mazing BBQ`,
             },
-            unit_amount: priceInCents,
+            unit_amount: prices[ticketType],
           },
           quantity: quantity,
         },
       ],
       mode: 'payment',
-      success_url: `${process.env.VITE_APP_URL || 'https://mumas-mazing-barbeque.replit.app'}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${process.env.VITE_APP_URL || 'https://mumas-mazing-barbeque.replit.app'}/tickets`,
+      success_url: `${req.headers.origin}/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${req.headers.origin}/tickets`,
       metadata: {
-        tier: tierName,
-        event: 'Mumas Mazing BBQ',
-        date: 'August 9, 2025',
-      },
+        ticketType,
+        quantity: quantity.toString()
+      }
     });
 
-    res.status(200).json({ sessionId: session.id });
+    res.json({ url: session.url });
   } catch (error) {
     console.error('Stripe error:', error);
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ error: 'Failed to create checkout session' });
   }
 });
 
-// Get checkout session endpoint
-app.get('/api/checkout-session', async (req, res) => {
+app.get('/api/checkout-session/:session_id', async (req, res) => {
   try {
-    const { session_id } = req.query;
-
-    if (!session_id) {
-      return res.status(400).json({ error: 'Session ID is required' });
-    }
-
-    const session = await stripe.checkout.sessions.retrieve(session_id);
-
-    res.status(200).json({
+    const session = await stripe.checkout.sessions.retrieve(req.params.session_id);
+    res.json({
       id: session.id,
       customer_email: session.customer_email,
       payment_status: session.payment_status,
@@ -80,12 +88,23 @@ app.get('/api/checkout-session', async (req, res) => {
   }
 });
 
+// Health check
+app.get('/api/health', (req, res) => {
+  res.json({ status: 'OK', timestamp: new Date().toISOString() });
+});
+
 // Serve React app for all other routes
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
-const PORT = process.env.PORT || 3000;
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ error: 'Something went wrong!' });
+});
+
 app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`🔥 Server running on port ${PORT}`);
+  console.log(`🌐 Environment: ${process.env.NODE_ENV || 'development'}`);
 });

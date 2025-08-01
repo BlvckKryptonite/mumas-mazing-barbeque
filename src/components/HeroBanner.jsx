@@ -42,7 +42,13 @@ const HeroBanner = () => {
       <div className="absolute bottom-0 w-full h-10 bg-gradient-to-b from-transparent to-black z-10"></div>
 
       {/* Headline and Tagline */}
-      <div className="z-20 w-full max-w-[900px] text-center md:text-right md:ml-auto md:mr-12 lg:mr-24">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="relative z-10 text-center max-w-6xl mx-auto px-6"
+        style={{ willChange: 'transform, opacity' }}
+      >
         <motion.h1
           className="text-3xl sm:text-4xl md:text-6xl lg:text-6xl xl:text-[4rem] font-heading text-white mb-4 leading-tight tracking-wider"
           initial="hidden"
@@ -80,7 +86,7 @@ const HeroBanner = () => {
         >
           "Where the grill meets greatness & steak saves the day!"
         </motion.p>
-      </div>
+      </motion.div>
 
       {/* Scroll Cue */}
       <motion.div
